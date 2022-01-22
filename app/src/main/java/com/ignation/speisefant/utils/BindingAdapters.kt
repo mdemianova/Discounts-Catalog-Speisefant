@@ -1,9 +1,10 @@
-package com.ignation.speisefant
+package com.ignation.speisefant.utils
 
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.ignation.speisefant.R
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {

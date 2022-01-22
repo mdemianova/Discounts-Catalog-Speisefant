@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ignation.speisefant.R
-import com.ignation.speisefant.domain.Product
 import com.ignation.speisefant.databinding.ProductLayoutBinding
+import com.ignation.speisefant.domain.Product
 
 class ProductAdapter(private val context: Context, private val dataset: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -23,7 +23,7 @@ class ProductAdapter(private val context: Context, private val dataset: List<Pro
             with(item) {
                 // add image
                 binding.productTitle.text = name
-                binding.productPriceNew.text = context.resources.getString(R.string.new_price, price)
+                binding.productPriceNew.text = context.resources.getString(R.string.new_price, newPrice)
                 binding.productDate.text = date
                 binding.productPriceOld.text = context.resources.getString(R.string.old_price, oldPrice)
             }

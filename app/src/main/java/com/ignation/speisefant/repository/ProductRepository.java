@@ -1,2 +1,5 @@
-package com.ignation.speisefant.repository;public class ProductRepository {
+package com.ignation.speisefant.repository;
+
+class ProductRepository {
+
 }
