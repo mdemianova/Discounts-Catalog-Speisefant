@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "579064196151",
+    "project_id": "speisefant",
+    "storage_bucket": "speisefant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579064196151:android:ac8f641d238a6a1038a3b2",
+        "android_client_info": {
+          "package_name": "com.ignation.speisefant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579064196151-stg85unmvnbqpl2e2pao9ojpm82m61de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYOQxy_KowIg9jCiaD-3vTQjIXlCT0R3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579064196151-stg85unmvnbqpl2e2pao9ojpm82m61de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
