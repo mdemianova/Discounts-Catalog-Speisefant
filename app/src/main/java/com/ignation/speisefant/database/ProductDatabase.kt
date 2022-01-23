@@ -7,15 +7,18 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "database_product")
 data class ProductDatabase(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long? = null,
     val name: String,
     @ColumnInfo(name = "image_url")
     val imageUrl: String,
     @ColumnInfo(name = "new_price")
-    val newPrice: String,
+    val newPrice: Float,
     @ColumnInfo(name = "old_price")
-    val oldPrice: String,
+    val oldPrice: Float,
     val shop: String,
-    val date: String,
+    @ColumnInfo(name = "start_date")
+    val startDate: String,
+    @ColumnInfo(name = "end_date")
+    val endDate: String,
     val type: String
 )
