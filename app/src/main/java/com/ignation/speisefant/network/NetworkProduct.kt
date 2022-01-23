@@ -36,5 +36,7 @@ fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
             endDate = it.endDate,
             type = it.type
         )
+
+
     }
 }
