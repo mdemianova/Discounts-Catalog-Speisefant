@@ -10,9 +10,9 @@ data class NetworkProduct(
     @Json(name = "image_url")
     val imageUrl: String,
     @Json(name = "new_price")
-    val newPrice: Float,
+    val newPrice: Int,
     @Json(name = "old_price")
-    val oldPrice: Float,
+    val oldPrice: Int,
     val shop: String,
     @Json(name = "start_date")
     val startDate: String,
@@ -36,7 +36,5 @@ fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
             endDate = it.endDate,
             type = it.type
         )
-
-
     }
 }
