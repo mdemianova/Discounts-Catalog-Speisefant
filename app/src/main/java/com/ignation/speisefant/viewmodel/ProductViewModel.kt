@@ -19,10 +19,12 @@ class ProductViewModel(application: Application) : ViewModel() {
     )
 
     init {
+        Log.d(TAG, "initializing VM")
         refreshDataFromRepository()
     }
 
     private fun refreshDataFromRepository() {
+        Log.d(TAG, "refreshDataFromRepository: start refreshing")
         viewModelScope.launch {
             try {
                 productRepository.refreshProducts()
@@ -42,5 +44,4 @@ class ProductViewModelFactory(val app: Application) : ViewModelProvider.Factory 
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 }

@@ -2,9 +2,7 @@ package com.ignation.speisefant.network
 
 import com.ignation.speisefant.database.ProductDatabase
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
 data class NetworkProduct(
     val name: String,
     @Json(name = "image_url")
@@ -21,8 +19,8 @@ data class NetworkProduct(
     val type: String
 )
 
-@JsonClass(generateAdapter = true)
 data class NetworkProductList(val products: List<NetworkProduct>)
+
 
 fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
     return products.map {
@@ -38,3 +36,4 @@ fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
         )
     }
 }
+
