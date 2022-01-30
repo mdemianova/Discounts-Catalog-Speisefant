@@ -4,12 +4,12 @@ import android.content.Context
 import com.ignation.speisefant.R
 import com.ignation.speisefant.database.ProductRoomDatabase
 import com.ignation.speisefant.network.NetworkProduct
-import com.ignation.speisefant.network.NetworkProductList
 import com.ignation.speisefant.network.asDatabaseModel
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import java.io.BufferedReader
 
 class ProductRepository(context: Context, private val database: ProductRoomDatabase) {
 
@@ -17,13 +17,23 @@ class ProductRepository(context: Context, private val database: ProductRoomDatab
         .add(KotlinJsonAdapterFactory())
         .build()
 
-    private val type = Types.newParameterizedType(NetworkProductList::class.java, List::class.java, NetworkProduct::class.java)
+    private val type = Types.newParameterizedType(List::class.java, NetworkProduct::class.java)
 
-    private val adapter: JsonAdapter<NetworkProductList> = moshi.adapter(type)
+    private val adapter: JsonAdapter<List<NetworkProduct>> = moshi.adapter(type)
+    private val input = context.resources.openRawResource(R.raw.data_input)
 
-    private val allProducts = context.resources.openRawResource(R.raw.data_input).toString()
-    private val result = adapter.nullSafe().fromJson(allProducts)
+    private fun readFile(): String {
+        val reader = BufferedReader(input.reader())
+        var allProducts: String
+        try {
+            allProducts = reader.readText()
+        } finally {
+            reader.close()
+        }
+        return allProducts
+    }
 
+    private val result = adapter.fromJson(readFile())
 
     suspend fun refreshProducts() {
         database.productDao().insertAllProducts(result!!.asDatabaseModel())

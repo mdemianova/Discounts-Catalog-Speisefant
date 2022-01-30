@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "database_product", indices = [Index(value = ["image_url", "name"])])
+@Entity(tableName = "database_product", indices = [Index(value = ["name", "image_url"])])
 data class ProductDatabase(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
