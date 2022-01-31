@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="product"
+            type="com.ignation.speisefant.domain.Product" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
         app:contentPadding="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,19 +23,23 @@
 
             <ImageView
                 android:id="@+id/product_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                app:imageUrl="@{product.image}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/product_picture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/image_placeholder"
-                imageUrl=""/>
+                tools:srcCompat="@drawable/image_placeholder" />
 
             <TextView
                 android:id="@+id/product_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/product_image"
                 app:layout_constraintTop_toTopOf="@id/product_image"
                 tools:text="10 oct - 15 oct" />
@@ -43,11 +49,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/product_image"
+                app:layout_constraintTop_toBottomOf="@+id/product_title"
                 tools:text="1.33€" />
 
             <TextView
@@ -64,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintStart_toEndOf="@id/product_image"
                 app:layout_constraintTop_toBottomOf="@id/product_date"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ignation.speisefant.R
 import com.ignation.speisefant.databinding.ProductLayoutBinding
 import com.ignation.speisefant.domain.Product
 
@@ -27,6 +28,9 @@ class ProductAdapter(private val context: Context) :
         with(holder) {
             with(item) {
                 binding.productTitle.text = name
+                binding.productDate.text = context.getString(R.string.date, startDate, endDate)
+                binding.productPriceNew.text = context.getString(R.string.new_price, newPrice.toFloat() / 100)
+                binding.productPriceOld.text = context.getString(R.string.old_price, oldPrice.toFloat() / 100)
             }
         }
     }

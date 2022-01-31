@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Speisefant</string>
     <string name="product_picture">Produktbild</string>
-    <string name="new_price">%s€</string>
-    <string name="old_price">%s€</string>
+    <string name="new_price">%1$.2f €</string>
+    <string name="old_price">%1$.2f €</string>
+    <string name="date">%s — %s</string>
 </resources>
