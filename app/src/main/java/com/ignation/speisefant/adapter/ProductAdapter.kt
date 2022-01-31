@@ -7,8 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ignation.speisefant.databinding.ProductLayoutBinding
 import com.ignation.speisefant.domain.Product
 
-class ProductAdapter(private val context: Context, private val dataset: List<Product>) :
+class ProductAdapter(private val context: Context) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+    var dataset: List<Product> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding =
@@ -20,16 +26,13 @@ class ProductAdapter(private val context: Context, private val dataset: List<Pro
         val item = dataset[position]
         with(holder) {
             with(item) {
-                // add image
                 binding.productTitle.text = name
-                //binding.productPriceNew.text = context.resources.getString(R.string.new_price, newPrice)
-                //binding.productDate.text = newDate
-                //binding.productPriceOld.text = context.resources.getString(R.string.old_price, oldPrice)
             }
         }
     }
 
     override fun getItemCount(): Int = dataset.size
 
-    class ProductViewHolder(val binding: ProductLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    class ProductViewHolder(val binding: ProductLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

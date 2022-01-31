@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.ignation.speisefant.domain.Product
 
 @Entity(tableName = "database_product", indices = [Index(value = ["name", "image_url"])])
 data class ProductDatabase(
@@ -23,3 +24,18 @@ data class ProductDatabase(
     val endDate: String,
     val type: String
 )
+
+fun List<ProductDatabase>.asDomainModel(): List<Product> {
+    return map {
+        Product(
+            name = it.name,
+            image = it.imageUrl,
+            newPrice = it.newPrice,
+            oldPrice = it.oldPrice,
+            shop = it.shop,
+            startDate = it.startDate,
+            endDate = it.endDate,
+            type = it.type
+        )
+    }
+}
