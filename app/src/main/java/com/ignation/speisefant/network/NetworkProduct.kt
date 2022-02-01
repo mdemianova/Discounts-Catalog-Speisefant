@@ -21,7 +21,6 @@ data class NetworkProduct(
 
 data class NetworkProductList(val products: List<NetworkProduct>)
 
-
 fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
     return products.map {
         ProductDatabase(

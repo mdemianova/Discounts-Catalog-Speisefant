@@ -6,6 +6,9 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import com.ignation.speisefant.R
 
+/**
+Adapter for displaying Product image
+ */
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
@@ -16,3 +19,11 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         }
     }
 }
+
+/**
+Adapter for formatting Product discount period
+ */
+//@BindingAdapter("discountPeriod")
+//fun setDiscountPeriod(textView: TextView, product: Product) {
+//    textView.text = convertDatesToString(product.startDate, product.endDate, textView.resources)
+//}
