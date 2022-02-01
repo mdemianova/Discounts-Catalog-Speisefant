@@ -1,6 +1,7 @@
 package com.ignation.speisefant.network
 
 import com.ignation.speisefant.utils.BASE_URL
+import com.ignation.speisefant.utils.INPUT_DATA
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ProductApiService {
-    @GET("input.json")
+    @GET(INPUT_DATA)
     suspend fun getNetworkProducts(): NetworkProductList
 }
 

@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:textSize="12sp"
+                app:discountPeriod="@{product}"
                 app:layout_constraintStart_toEndOf="@id/product_image"
                 app:layout_constraintTop_toTopOf="@id/product_image"
                 tools:text="10 oct - 15 oct" />
@@ -53,6 +54,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:formattedPrice="@{product.newPrice}"
                 app:layout_constraintStart_toEndOf="@id/product_image"
                 app:layout_constraintTop_toBottomOf="@+id/product_title"
                 tools:text="1.33€" />
@@ -62,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                app:formattedPrice="@{product.oldPrice}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/product_price_new"
                 app:layout_constraintStart_toEndOf="@id/product_price_new"
                 tools:text="1.6€" />

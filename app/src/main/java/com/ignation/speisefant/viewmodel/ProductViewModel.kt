@@ -13,10 +13,7 @@ const val TAG = "ProductViewModel"
 
 class ProductViewModel(application: Application) : ViewModel() {
 
-    private val productRepository = ProductRepository(
-        application.applicationContext,
-        ProductRoomDatabase.getDatabase(application)
-    )
+    private val productRepository = ProductRepository(ProductRoomDatabase.getDatabase(application))
 
     val allProducts = productRepository.products
 
@@ -25,11 +22,9 @@ class ProductViewModel(application: Application) : ViewModel() {
     }
 
     private fun refreshDataFromRepository() {
-        Log.d(TAG, "refreshDataFromRepository: start refreshing")
         viewModelScope.launch {
             try {
                 productRepository.refreshProducts()
-                Log.d(TAG, "refreshDataFromRepository: products inserted in database")
             } catch (e: Exception) {
                 Log.d(TAG, "refreshDataFromRepository: ${e.message}")
             }

@@ -1,6 +1,5 @@
 package com.ignation.speisefant.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.ignation.speisefant.database.ProductRoomDatabase
@@ -11,8 +10,7 @@ import com.ignation.speisefant.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ProductRepository(context: Context, private val database: ProductRoomDatabase) {
-
+class ProductRepository(private val database: ProductRoomDatabase) {
 
     val products: LiveData<List<Product>> =
         Transformations.map(database.productDao().getAllProducts()) {
@@ -26,5 +24,4 @@ class ProductRepository(context: Context, private val database: ProductRoomDatab
         }
 
     }
-
 }

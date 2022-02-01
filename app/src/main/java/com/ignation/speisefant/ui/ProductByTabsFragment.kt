@@ -29,7 +29,7 @@ class ProductByTabsFragment : Fragment() {
 
         _binding = FragmentProductByTabsBinding.inflate(layoutInflater)
 
-        val adapter = ProductAdapter(requireContext())
+        val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
 
         viewModel.allProducts.observe(this.viewLifecycleOwner) {
@@ -41,10 +41,6 @@ class ProductByTabsFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
     }
 
     override fun onDestroyView() {

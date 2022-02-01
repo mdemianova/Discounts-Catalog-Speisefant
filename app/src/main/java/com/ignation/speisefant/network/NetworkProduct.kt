@@ -35,19 +35,3 @@ fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
         )
     }
 }
-
-fun List<NetworkProduct>.asDatabaseModel(): List<ProductDatabase> {
-    return map {
-        ProductDatabase(
-            name = it.name,
-            imageUrl = it.imageUrl,
-            newPrice = it.newPrice,
-            oldPrice = it.oldPrice,
-            shop = it.shop,
-            startDate = it.startDate,
-            endDate = it.endDate,
-            type = it.type
-        )
-    }
-}
-
