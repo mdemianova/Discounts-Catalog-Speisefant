@@ -28,10 +28,10 @@ class ProductViewModel(application: Application) : ViewModel() {
         Log.d(TAG, "refreshDataFromRepository: start refreshing")
         viewModelScope.launch {
             try {
-                //productRepository.refreshProducts()
+                productRepository.refreshProducts()
                 Log.d(TAG, "refreshDataFromRepository: products inserted in database")
             } catch (e: Exception) {
-                Log.d(TAG, "refreshDataFromRepository: refresh error")
+                Log.d(TAG, "refreshDataFromRepository: ${e.message}")
             }
         }
     }

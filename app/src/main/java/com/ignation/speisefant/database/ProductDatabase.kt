@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.ignation.speisefant.domain.Product
 
-@Entity(tableName = "database_product", indices = [Index(value = ["name", "image_url"])])
+@Entity(tableName = "database_product", indices = [Index(value = ["name", "image_url"], unique = true)])
 data class ProductDatabase(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
