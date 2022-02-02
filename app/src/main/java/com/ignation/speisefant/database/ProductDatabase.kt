@@ -22,7 +22,8 @@ data class ProductDatabase(
     val startDate: String,
     @ColumnInfo(name = "end_date")
     val endDate: String,
-    val type: String
+    val type: String,
+    val category: String
 )
 
 fun List<ProductDatabase>.asDomainModel(): List<Product> {
@@ -35,7 +36,8 @@ fun List<ProductDatabase>.asDomainModel(): List<Product> {
             shop = it.shop,
             startDate = it.startDate,
             endDate = it.endDate,
-            type = it.type
+            type = it.type,
+            category = it.category
         )
     }
 }
