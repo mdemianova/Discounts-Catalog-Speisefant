@@ -6,8 +6,8 @@ data class Product(
     val newPrice: Int,
     val oldPrice: Int,
     val shop: String,
-    val startDate: String,
-    val endDate: String,
+    val startDate: Long,
+    val endDate: Long,
     val type: String,
     val category: String
 )

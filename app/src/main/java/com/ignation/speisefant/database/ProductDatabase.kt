@@ -19,9 +19,9 @@ data class ProductDatabase(
     val oldPrice: Int,
     val shop: String,
     @ColumnInfo(name = "start_date")
-    val startDate: String,
+    val startDate: Long,
     @ColumnInfo(name = "end_date")
-    val endDate: String,
+    val endDate: Long,
     val type: String,
     val category: String
 )

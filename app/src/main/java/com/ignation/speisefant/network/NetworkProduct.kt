@@ -13,9 +13,9 @@ data class NetworkProduct(
     val oldPrice: Int,
     val shop: String,
     @Json(name = "start_date")
-    val startDate: String,
+    val startDate: Long,
     @Json(name = "end_date")
-    val endDate: String,
+    val endDate: Long,
     val type: String,
     val category: String
 )

@@ -1,2 +1,3 @@
 /build
 /src/main/java/com/ignation/speisefant/utils/Keys.kt
+/src/main/java/com/ignation/speisefant/utils/TimeConverterForJson.kt
