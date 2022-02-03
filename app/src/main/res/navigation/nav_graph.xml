@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/productByTabsFragment">
+    app:startDestination="@id/titleFragment">
 
     <fragment
         android:id="@+id/productByTabsFragment"
-        android:name="com.ignation.speisefant.ui.ProductByTabsFragment"
+        android:name="com.ignation.speisefant.tabs.ProductByTabsFragment"
         android:label="fragment_product_by_tabs"
         tools:layout="@layout/fragment_product_by_tabs" />
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.ignation.speisefant.ui.TitleFragment"
+        android:name="com.ignation.speisefant.title.TitleFragment"
         android:label="TitleFragment" />
 </navigation>

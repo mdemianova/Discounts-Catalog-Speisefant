@@ -1,4 +1,4 @@
-package com.ignation.speisefant.adapter
+package com.ignation.speisefant.tabs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

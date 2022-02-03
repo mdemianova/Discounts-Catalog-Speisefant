@@ -1,4 +1,4 @@
-package com.ignation.speisefant.ui
+package com.ignation.speisefant.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.ignation.speisefant.adapter.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTabsBinding
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory

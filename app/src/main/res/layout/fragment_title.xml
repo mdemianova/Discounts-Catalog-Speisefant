@@ -80,71 +80,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/category_scroll" />
 
-        <GridLayout
-            android:id="@+id/shops_grid_view"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
+            android:layout_margin="6dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/middle_margin"
-            android:columnCount="3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/shops_title">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp">
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp">
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp">
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp">
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </GridLayout>
-
+            app:layout_constraintTop_toBottomOf="@id/shops_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

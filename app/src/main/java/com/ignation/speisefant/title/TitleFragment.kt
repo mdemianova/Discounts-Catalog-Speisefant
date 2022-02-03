@@ -1,4 +1,4 @@
-package com.ignation.speisefant.ui
+package com.ignation.speisefant.title
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +22,10 @@ class TitleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = ShopAdapter()
+        binding.recyclerView.adapter = adapter
+        //binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
     }
 
     override fun onDestroyView() {
