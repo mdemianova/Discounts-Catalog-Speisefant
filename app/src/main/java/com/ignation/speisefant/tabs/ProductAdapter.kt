@@ -33,6 +33,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             binding.apply {
                 this.product = product
                 productTitle.text = product.name
+                productShop.text = product.shop
                 executePendingBindings()
             }
         }
