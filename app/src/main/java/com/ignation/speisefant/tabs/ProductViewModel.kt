@@ -1,11 +1,10 @@
-package com.ignation.speisefant.viewmodel
+package com.ignation.speisefant.tabs
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.ignation.speisefant.database.ProductRoomDatabase
+import com.ignation.speisefant.domain.Product
 import com.ignation.speisefant.repository.ProductRepository
 import kotlinx.coroutines.launch
 
@@ -15,7 +14,15 @@ class ProductViewModel(application: Application) : ViewModel() {
 
     private val productRepository = ProductRepository(ProductRoomDatabase.getDatabase(application))
 
-    val allProducts = productRepository.products
+    private val allProducts = productRepository.products
+
+    fun productsByShop(shopName: String): LiveData<List<Product>> {
+        val shopProducts: LiveData<List<Product>> = Transformations.map(allProducts) { list ->
+            list.filter { it.shop == shopName }
+        }
+
+        return shopProducts
+    }
 
     init {
         refreshDataFromRepository()

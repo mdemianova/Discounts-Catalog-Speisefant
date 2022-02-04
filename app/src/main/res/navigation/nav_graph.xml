@@ -8,10 +8,22 @@
     <fragment
         android:id="@+id/productByTabsFragment"
         android:name="com.ignation.speisefant.tabs.ProductByTabsFragment"
-        android:label="fragment_product_by_tabs"
-        tools:layout="@layout/fragment_product_by_tabs" />
+        android:label=""
+        tools:layout="@layout/fragment_product_by_tabs">
+        <argument
+            android:name="filterTitle"
+            app:argType="string" />
+        <argument
+            android:name="isShop"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.ignation.speisefant.title.TitleFragment"
-        android:label="TitleFragment" />
+        android:label="TitleFragment" >
+        <action
+            android:id="@+id/action_titleFragment_to_productByTabsFragment"
+            app:destination="@id/productByTabsFragment" />
+    </fragment>
 </navigation>

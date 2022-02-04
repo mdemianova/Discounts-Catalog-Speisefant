@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ignation.speisefant.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -23,9 +24,11 @@ class TitleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ShopAdapter()
+        val adapter = ShopAdapter {
+            val action = TitleFragmentDirections.actionTitleFragmentToProductByTabsFragment(it.title, true)
+            this.findNavController().navigate(action)
+        }
         binding.recyclerView.adapter = adapter
-        //binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
     }
 
     override fun onDestroyView() {

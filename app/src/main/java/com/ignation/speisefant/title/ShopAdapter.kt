@@ -7,7 +7,8 @@ import com.ignation.speisefant.databinding.ShopItemLayoutBinding
 import com.ignation.speisefant.domain.Shop
 import com.ignation.speisefant.domain.ShopSource
 
-class ShopAdapter() : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
+class ShopAdapter(private val onItemClicked: (Shop) -> Unit) :
+    RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
 
     val dataset = ShopSource.shops
 
@@ -28,8 +29,11 @@ class ShopAdapter() : RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.bind(item)
+        val currentShop = dataset[position]
+        holder.itemView.setOnClickListener {
+            onItemClicked(currentShop)
+        }
+        holder.bind(currentShop)
     }
 
     override fun getItemCount(): Int {

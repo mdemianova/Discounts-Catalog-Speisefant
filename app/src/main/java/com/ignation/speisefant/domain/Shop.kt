@@ -15,5 +15,4 @@ object ShopSource {
         Shop(R.drawable.edeka, "Edeka"),
         Shop(R.drawable.lidl, "Lidl")
     )
-
 }
