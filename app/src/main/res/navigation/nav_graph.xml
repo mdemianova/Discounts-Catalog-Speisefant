@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.ignation.speisefant.title.TitleFragment"
-        android:label="TitleFragment" >
+        android:label="@string/app_name">
         <action
             android:id="@+id/action_titleFragment_to_productByTabsFragment"
             app:destination="@id/productByCategoryFragment" />

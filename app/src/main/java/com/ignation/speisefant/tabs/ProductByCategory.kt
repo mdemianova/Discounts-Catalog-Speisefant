@@ -48,7 +48,6 @@ class ProductByCategory : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val viewPager = binding.viewPager
         val adapter = ScreenSlidePagerAdapter(requireActivity().supportFragmentManager, lifecycle)
         viewPager.adapter = adapter
@@ -73,8 +72,7 @@ class ProductByCategory : Fragment() {
     }
 
     /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
-     * sequence.
+     * A simple pager adapter that represents fragment objects, in sequence.
      */
     private inner class ScreenSlidePagerAdapter(
         fragmentManager: FragmentManager,
