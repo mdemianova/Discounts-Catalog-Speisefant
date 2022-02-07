@@ -2,6 +2,7 @@ package com.ignation.speisefant.domain
 
 import androidx.annotation.DrawableRes
 import com.ignation.speisefant.R
+import com.ignation.speisefant.tabs.ProductAdapter
 
 data class Shop(
     @DrawableRes val imageResId: Int,
@@ -16,3 +17,5 @@ object ShopSource {
         Shop(R.drawable.lidl, "Lidl")
     )
 }
+
+data class ProductType(val adapter: ProductAdapter, val title: String)

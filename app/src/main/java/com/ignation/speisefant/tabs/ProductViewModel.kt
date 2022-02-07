@@ -14,15 +14,18 @@ class ProductViewModel(application: Application) : ViewModel() {
 
     private val productRepository = ProductRepository(ProductRoomDatabase.getDatabase(application))
 
-    private val allProducts = productRepository.products
+    private val allActualProducts = productRepository.products
+
 
     fun productsByShop(shopName: String): LiveData<List<Product>> {
-        val shopProducts: LiveData<List<Product>> = Transformations.map(allProducts) { list ->
+        return Transformations.map(allActualProducts) { list ->
             list.filter { it.shop == shopName }
         }
-
-        return shopProducts
     }
+
+    lateinit var productByCategory: LiveData<List<Product>>
+    lateinit var productsByType: LiveData<List<Product>>
+
 
     init {
         refreshDataFromRepository()
@@ -35,6 +38,12 @@ class ProductViewModel(application: Application) : ViewModel() {
             } catch (e: Exception) {
                 Log.d(TAG, "refreshDataFromRepository: ${e.message}")
             }
+        }
+    }
+
+    fun productsByTypeAndShop(categoryName: String): LiveData<List<Product>> {
+        return Transformations.map(productByCategory) { list ->
+            list.filter { it.type == categoryName }
         }
     }
 }

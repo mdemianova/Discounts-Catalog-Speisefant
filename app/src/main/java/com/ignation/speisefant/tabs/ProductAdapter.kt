@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ignation.speisefant.databinding.ProductLayoutBinding
 import com.ignation.speisefant.domain.Product
 
-class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    var dataset: List<Product> = emptyList()
+    var dataset = listOf<Product>()
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -6,12 +6,12 @@
     app:startDestination="@id/titleFragment">
 
     <fragment
-        android:id="@+id/productByTabsFragment"
-        android:name="com.ignation.speisefant.tabs.ProductByTabsFragment"
+        android:id="@+id/productByCategoryFragment"
+        android:name="com.ignation.speisefant.tabs.ProductByCategory"
         android:label=""
-        tools:layout="@layout/fragment_product_by_tabs">
+        tools:layout="@layout/fragment_product_by_category">
         <argument
-            android:name="filterTitle"
+            android:name="category"
             app:argType="string" />
         <argument
             android:name="isShop"
@@ -24,6 +24,6 @@
         android:label="TitleFragment" >
         <action
             android:id="@+id/action_titleFragment_to_productByTabsFragment"
-            app:destination="@id/productByTabsFragment" />
+            app:destination="@id/productByCategoryFragment" />
     </fragment>
 </navigation>
