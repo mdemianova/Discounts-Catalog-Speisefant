@@ -1,4 +1,4 @@
-package com.ignation.speisefant.title
+package com.ignation.speisefant.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.ignation.speisefant.adapters.CategoryAdapter
+import com.ignation.speisefant.adapters.ShopAdapter
 import com.ignation.speisefant.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -24,11 +26,17 @@ class TitleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ShopAdapter {
-            val action = TitleFragmentDirections.actionTitleFragmentToProductByTabsFragment(it.title, true)
+        val categoryAdapter = CategoryAdapter {
+            // TODO: add navigation action
+        }
+        binding.recyclerViewCategory.adapter = categoryAdapter
+
+
+        val shopAdapter = ShopAdapter {
+            val action = TitleFragmentDirections.actionTitleFragmentToProductByTabsFragment(it.title)
             this.findNavController().navigate(action)
         }
-        binding.recyclerView.adapter = adapter
+        binding.recyclerViewShop.adapter = shopAdapter
     }
 
     override fun onDestroyView() {

@@ -1,4 +1,4 @@
-package com.ignation.speisefant.title
+package com.ignation.speisefant.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

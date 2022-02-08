@@ -2,7 +2,7 @@ package com.ignation.speisefant.domain
 
 import androidx.annotation.DrawableRes
 import com.ignation.speisefant.R
-import com.ignation.speisefant.tabs.ProductAdapter
+import com.ignation.speisefant.adapters.ProductAdapter
 
 data class Shop(
     @DrawableRes val imageResId: Int,

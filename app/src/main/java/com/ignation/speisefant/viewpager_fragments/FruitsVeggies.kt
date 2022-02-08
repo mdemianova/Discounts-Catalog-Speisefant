@@ -1,4 +1,4 @@
-package com.ignation.speisefant.category
+package com.ignation.speisefant.viewpager_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
-import com.ignation.speisefant.tabs.ProductAdapter
-import com.ignation.speisefant.tabs.ProductViewModel
-import com.ignation.speisefant.tabs.ProductViewModelFactory
+import com.ignation.speisefant.viewmodel.ProductViewModel
+import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
 class FruitsVeggies : Fragment() {
 

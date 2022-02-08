@@ -1,4 +1,4 @@
-package com.ignation.speisefant.tabs
+package com.ignation.speisefant.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -25,7 +25,6 @@ class ProductViewModel(application: Application) : ViewModel() {
 
     lateinit var productByCategory: LiveData<List<Product>>
     lateinit var productsByType: LiveData<List<Product>>
-
 
     init {
         refreshDataFromRepository()
