@@ -30,10 +30,9 @@ class Alcohol : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.productsByType = viewModel.productsByTypeAndShop("alco")
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.productsByType.observe(this.viewLifecycleOwner) {
+        viewModel.getProductsByType("alco", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }

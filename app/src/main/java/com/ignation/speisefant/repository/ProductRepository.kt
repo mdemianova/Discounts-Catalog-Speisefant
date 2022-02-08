@@ -22,6 +22,13 @@ class ProductRepository(private val database: ProductRoomDatabase) {
             it.asDomainModel()
         }
 
+    val productsOrderByShop: LiveData<List<Product>> =
+        Transformations.map(
+            database.productDao().getAllProductsOrderedByShop(actualPeriod.first, actualPeriod.second)
+        ) {
+            it.asDomainModel()
+        }
+
     suspend fun refreshProducts() {
         withContext(Dispatchers.IO) {
             val networkResponse = ProductApi.retrofitService.getNetworkProducts()

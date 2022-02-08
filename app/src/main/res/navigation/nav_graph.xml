@@ -6,20 +6,28 @@
     app:startDestination="@id/titleFragment">
 
     <fragment
-        android:id="@+id/productByCategoryFragment"
-        android:name="com.ignation.speisefant.fragments.ProductByShop"
-        android:label=""
-        tools:layout="@layout/fragment_product_by_category">
-        <argument
-            android:name="category"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/titleFragment"
         android:name="com.ignation.speisefant.fragments.TitleFragment"
         android:label="@string/app_name">
         <action
-            android:id="@+id/action_titleFragment_to_productByTabsFragment"
-            app:destination="@id/productByCategoryFragment" />
+            android:id="@+id/action_titleFragment_to_productByShopFragment"
+            app:destination="@id/productByShopFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_productByTypeFragment"
+            app:destination="@id/productByTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productByShopFragment"
+        android:name="com.ignation.speisefant.fragments.ProductByShopFragment">
+        <argument
+            android:name="shop"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/productByTypeFragment"
+        android:name="com.ignation.speisefant.fragments.ProductByTypeFragment">
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

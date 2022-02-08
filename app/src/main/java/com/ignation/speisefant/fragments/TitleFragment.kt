@@ -27,13 +27,14 @@ class TitleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val categoryAdapter = CategoryAdapter {
-            // TODO: add navigation action
+            val action = TitleFragmentDirections.actionTitleFragmentToProductByCategoryFragment(it.title)
+            this.findNavController().navigate(action)
         }
         binding.recyclerViewCategory.adapter = categoryAdapter
 
 
         val shopAdapter = ShopAdapter {
-            val action = TitleFragmentDirections.actionTitleFragmentToProductByTabsFragment(it.title)
+            val action = TitleFragmentDirections.actionTitleFragmentToProductByShopFragment(it.title)
             this.findNavController().navigate(action)
         }
         binding.recyclerViewShop.adapter = shopAdapter

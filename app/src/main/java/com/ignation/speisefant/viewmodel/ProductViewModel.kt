@@ -13,21 +13,25 @@ const val TAG = "ProductViewModel"
 class ProductViewModel(application: Application) : ViewModel() {
 
     private val productRepository = ProductRepository(ProductRoomDatabase.getDatabase(application))
-
     private val allActualProducts = productRepository.products
+    val productsOrderByShop = productRepository.productsOrderByShop
 
-
-    fun productsByShop(shopName: String): LiveData<List<Product>> {
-        return Transformations.map(allActualProducts) { list ->
-            list.filter { it.shop == shopName }
-        }
-    }
-
-    lateinit var productByCategory: LiveData<List<Product>>
-    lateinit var productsByType: LiveData<List<Product>>
+    lateinit var productsByShop: LiveData<List<Product>>
 
     init {
         refreshDataFromRepository()
+    }
+
+    fun getProductsByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {
+        return Transformations.map(productsDataset) { list ->
+            list.filter { it.type == type }
+        }
+    }
+
+    fun getProductsByShop(shopName: String): LiveData<List<Product>> {
+        return Transformations.map(allActualProducts) { list ->
+            list.filter { it.shop == shopName }
+        }
     }
 
     private fun refreshDataFromRepository() {
@@ -37,12 +41,6 @@ class ProductViewModel(application: Application) : ViewModel() {
             } catch (e: Exception) {
                 Log.d(TAG, "refreshDataFromRepository: ${e.message}")
             }
-        }
-    }
-
-    fun productsByTypeAndShop(categoryName: String): LiveData<List<Product>> {
-        return Transformations.map(productByCategory) { list ->
-            list.filter { it.type == categoryName }
         }
     }
 }

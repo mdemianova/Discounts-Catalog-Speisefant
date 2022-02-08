@@ -1,42 +1,57 @@
-package com.ignation.speisefant.viewpager_fragments
+package com.ignation.speisefant.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
-class FruitsVeggies : Fragment() {
+class ProductByTypeFragment : Fragment() {
 
-    private lateinit var binding: FragmentProductByTypeBinding
+    private var _binding: FragmentProductByTypeBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: ProductViewModel by activityViewModels() {
         ProductViewModelFactory(requireActivity().application)
     }
+
+    private val navigationArgs: ProductByTypeFragmentArgs by navArgs()
+    private lateinit var type: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentProductByTypeBinding.inflate(layoutInflater)
+        _binding = FragmentProductByTypeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        type = navigationArgs.type
+        (activity as AppCompatActivity).supportActionBar?.title = type
+
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.getProductsByType("fruits", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
+
+        viewModel.getProductsByType(type.lowercase(), viewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

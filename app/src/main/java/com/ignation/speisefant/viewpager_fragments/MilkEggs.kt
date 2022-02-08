@@ -30,10 +30,9 @@ class MilkEggs : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.productsByType = viewModel.productsByTypeAndShop("milk")
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.productsByType.observe(this.viewLifecycleOwner) {
+        viewModel.getProductsByType("milk", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }
