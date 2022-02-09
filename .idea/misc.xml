@@ -11,6 +11,7 @@
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/activity_main.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/category_layout.xml" value="0.24074074074074073" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/fragment_product_by_category.xml" value="0.2222222222222222" />
+        <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/fragment_product_by_shop.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/fragment_product_by_tabs.xml" value="0.1" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/fragment_product_by_type.xml" value="0.13269927536231885" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/fragment_tabs.xml" value="0.1" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/product_layout.xml" value="0.18501170960187355" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/shop_item_layout.xml" value="0.1" />
         <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/layout/type_view_pager.xml" value="0.2222222222222222" />
+        <entry key="..\:/Users/korch/AndroidStudioProjects/Speisefant/app/src/main/res/menu/search.xml" value="0.2" />
       </map>
     </option>
   </component>
