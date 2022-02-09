@@ -27,7 +27,7 @@ class TitleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val categoryAdapter = CategoryAdapter {
-            val action = TitleFragmentDirections.actionTitleFragmentToProductByCategoryFragment(it.title)
+            val action = TitleFragmentDirections.actionTitleFragmentToProductByTypeFragment(it.title)
             this.findNavController().navigate(action)
         }
         binding.recyclerViewCategory.adapter = categoryAdapter

@@ -20,6 +20,7 @@ class ProductViewModel(application: Application) : ViewModel() {
 
     init {
         refreshDataFromRepository()
+        Log.d(TAG, "ViewModel created")
     }
 
     fun getProductsByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {

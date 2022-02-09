@@ -3,4 +3,6 @@
     <string name="product_picture">Produktbild</string>
     <string name="price">%1$.2f €</string>
     <string name="date">%s — %s</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type the product</string>
 </resources>
