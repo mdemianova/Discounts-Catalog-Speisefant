@@ -30,4 +30,12 @@
             android:name="type"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.ignation.speisefant.fragments.SearchFragment"
+        android:label="@string/app_name" >
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
 </navigation>

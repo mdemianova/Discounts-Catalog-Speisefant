@@ -18,7 +18,7 @@ class ProductByTypeFragment : Fragment() {
     private var _binding: FragmentProductByTypeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProductViewModel by activityViewModels() {
+    private val productViewModel: ProductViewModel by activityViewModels() {
         ProductViewModelFactory(requireActivity().application)
     }
 
@@ -43,7 +43,7 @@ class ProductByTypeFragment : Fragment() {
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
 
-        viewModel.getProductsByType(type.lowercase(), viewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
+        productViewModel.getByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }

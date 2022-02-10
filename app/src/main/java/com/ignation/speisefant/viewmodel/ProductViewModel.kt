@@ -20,18 +20,25 @@ class ProductViewModel(application: Application) : ViewModel() {
 
     init {
         refreshDataFromRepository()
-        Log.d(TAG, "ViewModel created")
     }
 
-    fun getProductsByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {
+    fun getByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {
         return Transformations.map(productsDataset) { list ->
             list.filter { it.type == type }
         }
     }
 
-    fun getProductsByShop(shopName: String): LiveData<List<Product>> {
+    fun getByShop(shopName: String): LiveData<List<Product>> {
         return Transformations.map(allActualProducts) { list ->
             list.filter { it.shop == shopName }
+        }
+    }
+
+    fun searchByName(query: String): LiveData<List<Product>> {
+        return Transformations.map(allActualProducts) { list ->
+            list.filter {
+                it.name.contains(query, true)
+            }
         }
     }
 

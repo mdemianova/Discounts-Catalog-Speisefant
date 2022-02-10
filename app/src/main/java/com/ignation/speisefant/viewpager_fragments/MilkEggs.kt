@@ -32,7 +32,7 @@ class MilkEggs : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.getProductsByType("milk", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
+        viewModel.getByType("milk", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }

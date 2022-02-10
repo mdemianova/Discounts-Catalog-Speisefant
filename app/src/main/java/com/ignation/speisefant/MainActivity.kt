@@ -1,17 +1,14 @@
 package com.ignation.speisefant
 
 
-import android.app.SearchManager
-import android.content.ComponentName
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.ignation.speisefant.search.SearchableActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,10 +32,25 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.search, menu)
 
         val searchView = menu.findItem(R.id.action_search).actionView as SearchView
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-        val componentName = ComponentName(applicationContext, SearchableActivity::class.java)
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.isIconified = true;
+                searchView.clearFocus();
+
+                val bundle = bundleOf("query" to query)
+                navController.navigateUp()
+                navController.navigate(R.id.searchFragment, bundle)
+
+                (menu.findItem(R.id.action_search)).collapseActionView()
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
 
         return true
     }

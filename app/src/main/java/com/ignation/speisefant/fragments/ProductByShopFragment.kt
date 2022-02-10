@@ -19,7 +19,7 @@ class ProductByShopFragment : Fragment() {
     private var _binding: FragmentProductByShopBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProductViewModel by activityViewModels() {
+    private val productViewModel: ProductViewModel by activityViewModels() {
         ProductViewModelFactory(requireActivity().application)
     }
 
@@ -36,7 +36,7 @@ class ProductByShopFragment : Fragment() {
 
         _binding = FragmentProductByShopBinding.inflate(layoutInflater)
 
-        viewModel.productsByShop = viewModel.getProductsByShop(shopName)
+        productViewModel.productsByShop = productViewModel.getByShop(shopName)
 
         return binding.root
     }
