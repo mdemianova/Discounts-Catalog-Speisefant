@@ -36,7 +36,7 @@ class ProductByShopFragment : Fragment() {
 
         _binding = FragmentProductByShopBinding.inflate(layoutInflater)
 
-        productViewModel.productsByShop = productViewModel.getByShop(shopName)
+        productViewModel.productsByShop = productViewModel.filterByShop(shopName)
 
         return binding.root
     }

@@ -5,16 +5,16 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.ignation.speisefant.database.ProductRoomDatabase
 import com.ignation.speisefant.domain.Product
-import com.ignation.speisefant.repository.ProductRepository
+import com.ignation.speisefant.repository.DefaultProductRepository
 import kotlinx.coroutines.launch
 
 const val TAG = "ProductViewModel"
 
 class ProductViewModel(application: Application) : ViewModel() {
 
-    private val productRepository = ProductRepository(ProductRoomDatabase.getDatabase(application))
-    private val allActualProducts = productRepository.products
-    val productsOrderByShop = productRepository.productsOrderByShop
+    private val productRepository = DefaultProductRepository(ProductRoomDatabase.getDatabase(application))
+    private val allActualProducts = productRepository.actualProducts()
+    val productsOrderByShop = productRepository.actualProductsOrderedByShop()
 
     lateinit var productsByShop: LiveData<List<Product>>
 
@@ -22,13 +22,13 @@ class ProductViewModel(application: Application) : ViewModel() {
         refreshDataFromRepository()
     }
 
-    fun getByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {
+    fun filterByType(type: String, productsDataset: LiveData<List<Product>>): LiveData<List<Product>> {
         return Transformations.map(productsDataset) { list ->
             list.filter { it.type == type }
         }
     }
 
-    fun getByShop(shopName: String): LiveData<List<Product>> {
+    fun filterByShop(shopName: String): LiveData<List<Product>> {
         return Transformations.map(allActualProducts) { list ->
             list.filter { it.shop == shopName }
         }

@@ -43,7 +43,7 @@ class ProductByTypeFragment : Fragment() {
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
 
-        productViewModel.getByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
+        productViewModel.filterByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }
