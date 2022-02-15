@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
 
 
-    <style name="Theme.WhiteBar" parent="Theme.AppCompat.DayNight">
+    <style name="Theme.Speisefant.WhiteBar" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/deep_orange_400</item>
