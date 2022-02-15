@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 class DefaultProductRepository(val application: Application) : ProductRepository {
 
     private val actualPeriod = createActualPeriod()
-    private val database =  ProductRoomDatabase.getDatabase(application)
+    private val database = ProductRoomDatabase.getDatabase(application)
 
     override suspend fun refreshProducts() {
         withContext(Dispatchers.IO) {

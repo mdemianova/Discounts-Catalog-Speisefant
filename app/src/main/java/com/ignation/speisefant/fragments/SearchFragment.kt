@@ -30,9 +30,6 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductByTypeBinding.inflate(layoutInflater)
-
-        binding.shimmerLayout.startShimmer()
-
         return binding.root
     }
 
@@ -44,8 +41,6 @@ class SearchFragment : Fragment() {
 
         productViewModel.searchByName(query).observe(this.viewLifecycleOwner) {
             it.let {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
                 adapter.dataset = it
             }
             if (adapter.dataset.isEmpty()) {

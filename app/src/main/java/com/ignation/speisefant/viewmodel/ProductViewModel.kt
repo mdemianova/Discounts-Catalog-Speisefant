@@ -1,6 +1,5 @@
 package com.ignation.speisefant.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.ignation.speisefant.domain.Product
 import com.ignation.speisefant.repository.DefaultProductRepository
@@ -14,10 +13,16 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
     private val _allActualProducts: LiveData<List<Product>> = productRepository.actualProducts()
     val allActualProducts: LiveData<List<Product>> = _allActualProducts
 
+    private var _eventNetworkError = MutableLiveData(false)
+    val eventNetworkError = _eventNetworkError
 
     val productsOrderByShop = productRepository.actualProductsOrderedByShop()
 
     lateinit var productsByShop: LiveData<List<Product>>
+
+    fun errorShown() {
+        _eventNetworkError.value = false
+    }
 
     init {
         refreshDataFromRepository()
@@ -50,8 +55,9 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
         viewModelScope.launch {
             try {
                 productRepository.refreshProducts()
+                _eventNetworkError.value = false
             } catch (e: Exception) {
-                Log.d(TAG, "refreshDataFromRepository: ${e.message}")
+                _eventNetworkError.value = true
             }
         }
     }

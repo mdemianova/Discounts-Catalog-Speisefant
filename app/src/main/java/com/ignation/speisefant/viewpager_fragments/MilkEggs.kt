@@ -26,9 +26,6 @@ class MilkEggs : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductByTypeBinding.inflate(layoutInflater)
-
-        binding.shimmerLayout.startShimmer()
-
         return binding.root
     }
 
@@ -36,22 +33,20 @@ class MilkEggs : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("milk", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
-            it.let {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
-                adapter.dataset = it
+        viewModel.filteredByType("milk", viewModel.productsByShop)
+            .observe(this.viewLifecycleOwner) {
+                it.let {
+                    adapter.dataset = it
+                }
+                if (adapter.dataset.isEmpty()) {
+                    binding.recyclerView.visibility = View.GONE
+                    binding.emptyTitle.visibility = View.VISIBLE
+                    binding.emptyText.visibility = View.VISIBLE
+                } else {
+                    binding.recyclerView.visibility = View.VISIBLE
+                    binding.emptyTitle.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
+                }
             }
-
-            if (adapter.dataset.isEmpty()) {
-                binding.recyclerView.visibility = View.GONE
-                binding.emptyTitle.visibility = View.VISIBLE
-                binding.emptyText.visibility = View.VISIBLE
-            } else {
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.emptyTitle.visibility = View.GONE
-                binding.emptyText.visibility = View.GONE
-            }
-        }
     }
 }

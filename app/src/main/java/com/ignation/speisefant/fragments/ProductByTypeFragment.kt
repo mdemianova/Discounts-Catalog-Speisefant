@@ -32,9 +32,6 @@ class ProductByTypeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProductByTypeBinding.inflate(inflater, container, false)
-
-        binding.shimmerLayout.startShimmer()
-
         return binding.root
     }
 
@@ -49,8 +46,6 @@ class ProductByTypeFragment : Fragment() {
 
         productViewModel.filteredByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
                 adapter.dataset = it
             }
             if (adapter.dataset.isEmpty()) {

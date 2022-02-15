@@ -26,9 +26,6 @@ class Alcohol : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductByTypeBinding.inflate(layoutInflater)
-
-        binding.shimmerLayout.startShimmer()
-
         return binding.root
     }
 
@@ -36,11 +33,11 @@ class Alcohol : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("alco", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
-            it.let {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
-                adapter.dataset = it
+        viewModel.filteredByType("alco", viewModel.productsByShop)
+            .observe(this.viewLifecycleOwner) {
+                it.let {
+                    adapter.dataset = it
+                }
                 if (adapter.dataset.isEmpty()) {
                     binding.recyclerView.visibility = View.GONE
                     binding.emptyTitle.visibility = View.VISIBLE
@@ -51,6 +48,5 @@ class Alcohol : Fragment() {
                     binding.emptyText.visibility = View.GONE
                 }
             }
-        }
     }
 }
