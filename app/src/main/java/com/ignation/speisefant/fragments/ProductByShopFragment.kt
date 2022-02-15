@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ignation.speisefant.adapters.ViewPagerAdapter
 import com.ignation.speisefant.databinding.FragmentProductByShopBinding
+import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
@@ -20,7 +21,7 @@ class ProductByShopFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val productViewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(requireActivity().application)
+        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
     }
 
     private val navigationArgs: ProductByShopFragmentArgs by navArgs()
@@ -36,7 +37,7 @@ class ProductByShopFragment : Fragment() {
 
         _binding = FragmentProductByShopBinding.inflate(layoutInflater)
 
-        productViewModel.productsByShop = productViewModel.filterByShop(shopName)
+        productViewModel.productsByShop = productViewModel.filteredByShop(shopName)
 
         return binding.root
     }

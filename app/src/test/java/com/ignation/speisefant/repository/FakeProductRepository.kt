@@ -1,6 +1,5 @@
 package com.ignation.speisefant.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -8,7 +7,7 @@ import com.ignation.speisefant.domain.Product
 
 class FakeProductRepository : ProductRepository {
 
-    private val productList = listOf(
+    private val dataset = listOf(
         Product(
             name = "Orange Juice",
             image = "juice.jpg",
@@ -54,7 +53,7 @@ class FakeProductRepository : ProductRepository {
             image = "tomato.jpg",
             newPrice = 75,
             oldPrice = 100,
-            shop = "Netto",
+            shop = "Rewe",
             startDate = 1644188400000,
             endDate = 1645225200000,
             type = "fruits"
@@ -64,7 +63,7 @@ class FakeProductRepository : ProductRepository {
             image = "apple.jpg",
             newPrice = 105,
             oldPrice = 130,
-            shop = "Netto",
+            shop = "hey",
             startDate = 1644188400000,
             endDate = 1645225200000,
             type = "fruits"
@@ -72,7 +71,7 @@ class FakeProductRepository : ProductRepository {
 
     )
 
-    private val observableProducts = MutableLiveData(productList)
+    private val observableProducts = MutableLiveData<List<Product>>()
 
     override fun actualProducts(): LiveData<List<Product>> {
         return observableProducts
@@ -85,6 +84,6 @@ class FakeProductRepository : ProductRepository {
     }
 
     override suspend fun refreshProducts() {
-        Log.d("FakeProductRepository", "refreshProducts: products refreshed")
+        observableProducts.value = dataset
     }
 }

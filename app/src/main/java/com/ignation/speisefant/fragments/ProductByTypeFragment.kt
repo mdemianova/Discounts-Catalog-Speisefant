@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
+import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
@@ -19,7 +20,7 @@ class ProductByTypeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val productViewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(requireActivity().application)
+        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
     }
 
     private val navigationArgs: ProductByTypeFragmentArgs by navArgs()
@@ -43,7 +44,7 @@ class ProductByTypeFragment : Fragment() {
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
 
-        productViewModel.filterByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
+        productViewModel.filteredByType(type.lowercase(), productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }

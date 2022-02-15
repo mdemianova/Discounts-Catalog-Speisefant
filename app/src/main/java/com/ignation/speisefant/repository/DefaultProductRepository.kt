@@ -1,5 +1,6 @@
 package com.ignation.speisefant.repository
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.ignation.speisefant.database.ProductRoomDatabase
@@ -11,9 +12,10 @@ import com.ignation.speisefant.utils.createActualPeriod
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class DefaultProductRepository(private val database: ProductRoomDatabase) : ProductRepository {
+class DefaultProductRepository(val application: Application) : ProductRepository {
 
     private val actualPeriod = createActualPeriod()
+    private val database =  ProductRoomDatabase.getDatabase(application)
 
     override suspend fun refreshProducts() {
         withContext(Dispatchers.IO) {

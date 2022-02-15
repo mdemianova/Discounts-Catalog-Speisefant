@@ -1,34 +1,53 @@
 package com.ignation.speisefant.viewmodel
 
-import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.ignation.speisefant.MainCoroutineRule
 import com.ignation.speisefant.repository.FakeProductRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
 
-//@RunWith(AndroidJUnit4::class)
+@ExperimentalCoroutinesApi
 class ProductViewModelTest {
-
-    private lateinit var productViewModel: ProductViewModel
-    private lateinit var fakeRepository: FakeProductRepository
-
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
+
+    private lateinit var productViewModel: ProductViewModel
+
     @Before
     fun setup() {
-        val application: Application = Mockito.mock(Application::class.java)
-        productViewModel = ProductViewModel(application)
-        fakeRepository = FakeProductRepository()
+        productViewModel = ProductViewModel(FakeProductRepository())
+    }
+
+    /**
+     * ProductViewModel functions use Transformations.map(). To trigger a transformation, an object
+     * has to be observed for changes.
+     */
+    @Test
+    fun dataset_filter_by_type_drinks_returns_2() {
+        val dataset = productViewModel.allActualProducts
+        val filtered = productViewModel.filteredByType("drinks", dataset)
+        filtered.observeForever {}
+        assertEquals("Filter by type gave wrong result", 2, filtered.value?.size)
     }
 
     @Test
-    fun datasource_filter_by_type_returns_2() {
-        val filtered = productViewModel.filterByType("drinks", fakeRepository.actualProducts())
-        assertEquals("Filter by type gave wrong result", 2, filtered.value?.size)
+    fun dataset_filter_by_shop_rewe_returns_3() {
+        val filtered = productViewModel.filteredByShop("Rewe")
+        filtered.observeForever {}
+        assertEquals("Filter by shop gave wrong result", 3, filtered.value?.size)
+    }
+
+    @Test
+    fun search_by_name_apple_returns_1() {
+        val filtered = productViewModel.searchByName("apple")
+        filtered.observeForever {}
+        assertEquals("Search by name gave wrong result", 1, filtered.value?.size)
     }
 }
