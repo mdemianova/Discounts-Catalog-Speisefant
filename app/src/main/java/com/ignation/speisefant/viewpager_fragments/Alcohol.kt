@@ -36,6 +36,15 @@ class Alcohol : Fragment() {
         viewModel.filteredByType("alco", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
+                if (adapter.dataset.isEmpty()) {
+                    binding.recyclerView.visibility = View.GONE
+                    binding.emptyTitle.visibility = View.VISIBLE
+                    binding.emptyText.visibility = View.VISIBLE
+                } else {
+                    binding.recyclerView.visibility = View.VISIBLE
+                    binding.emptyTitle.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
+                }
             }
         }
     }

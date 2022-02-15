@@ -5,4 +5,6 @@
     <string name="date">%s — %s</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Type the product</string>
+    <string name="empty_title">Nothing found :(</string>
+    <string name="empty_text">There is no discount on this product this week.</string>
 </resources>

@@ -38,6 +38,4 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             }
         }
     }
-
-    // TODO: add header
 }

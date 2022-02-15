@@ -53,4 +53,3 @@ private fun convertToStringFromLong(date: Long): String {
 
     return formatter.format(localDate)
 }
-
