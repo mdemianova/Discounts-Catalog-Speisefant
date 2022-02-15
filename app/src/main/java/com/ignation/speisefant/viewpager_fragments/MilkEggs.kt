@@ -26,6 +26,9 @@ class MilkEggs : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductByTypeBinding.inflate(layoutInflater)
+
+        binding.shimmerLayout.startShimmer()
+
         return binding.root
     }
 
@@ -35,6 +38,8 @@ class MilkEggs : Fragment() {
         binding.recyclerView.adapter = adapter
         viewModel.filteredByType("milk", viewModel.productsByShop).observe(this.viewLifecycleOwner) {
             it.let {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
                 adapter.dataset = it
             }
 

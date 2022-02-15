@@ -11,5 +11,5 @@
     <color name="deep_orange_400">#ff7043</color>
     <color name="deep_orange_light">#ffa270</color>
     <color name="deep_orange_dark">#c63f17</color>
-    <color name="skeleton">#b0bec5</color>
+    <color name="skeleton">#dddddd</color>
 </resources>
