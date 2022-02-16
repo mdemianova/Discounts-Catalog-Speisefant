@@ -56,6 +56,11 @@ class TitleFragment : Fragment() {
             this.findNavController().navigate(action)
         }
         binding.recyclerViewShop.adapter = shopAdapter
+
+        binding.swiperefresh.setOnRefreshListener {
+            productViewModel.refreshDataFromRepository()
+            binding.swiperefresh.isRefreshing = false
+        }
     }
 
     override fun onDestroyView() {

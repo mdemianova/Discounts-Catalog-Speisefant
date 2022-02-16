@@ -8,4 +8,6 @@
     <string name="empty_title">Nothing found :(</string>
     <string name="empty_text">There is no discount on this product this week.</string>
     <string name="network_error">No Internet connection</string>
+    <string name="shops_title">Shops</string>
+    <string name="category_title">Category</string>
 </resources>

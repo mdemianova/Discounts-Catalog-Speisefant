@@ -51,8 +51,9 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
         }
     }
 
-    private fun refreshDataFromRepository() {
+    fun refreshDataFromRepository() {
         viewModelScope.launch {
+            _eventNetworkError.value = false
             try {
                 productRepository.refreshProducts()
                 _eventNetworkError.value = false
