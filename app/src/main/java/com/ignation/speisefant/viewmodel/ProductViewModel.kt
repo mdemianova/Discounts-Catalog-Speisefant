@@ -6,17 +6,15 @@ import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.repository.ProductRepository
 import kotlinx.coroutines.launch
 
-const val TAG = "ProductViewModel"
-
 class ProductViewModel(private val productRepository: ProductRepository) : ViewModel() {
 
-    private val _allActualProducts: LiveData<List<Product>> = productRepository.actualProducts()
+    private val _allActualProducts: LiveData<List<Product>> = productRepository.getActualProducts()
     val allActualProducts: LiveData<List<Product>> = _allActualProducts
 
     private var _eventNetworkError = MutableLiveData(false)
-    val eventNetworkError = _eventNetworkError
+    val eventNetworkError: LiveData<Boolean> = _eventNetworkError
 
-    val productsOrderByShop = productRepository.actualProductsOrderedByShop()
+    val productsOrderByShop = productRepository.getActualProductsOrderedByShop()
 
     lateinit var productsByShop: LiveData<List<Product>>
 

@@ -17,6 +17,9 @@ class DefaultProductRepository(val application: Application) : ProductRepository
     private val actualPeriod = createActualPeriod()
     private val database = ProductRoomDatabase.getDatabase(application)
 
+    /**
+     * Fetches data from the server and caches it in Room database.
+     */
     override suspend fun refreshProducts() {
         withContext(Dispatchers.IO) {
             val networkResponse = ProductApi.retrofitService.getNetworkProducts()
@@ -24,7 +27,7 @@ class DefaultProductRepository(val application: Application) : ProductRepository
         }
     }
 
-    override fun actualProducts(): LiveData<List<Product>> {
+    override fun getActualProducts(): LiveData<List<Product>> {
         return Transformations.map(
             database.productDao().getAllActualProducts(actualPeriod.first, actualPeriod.second)
         ) {
@@ -32,7 +35,7 @@ class DefaultProductRepository(val application: Application) : ProductRepository
         }
     }
 
-    override fun actualProductsOrderedByShop(): LiveData<List<Product>> {
+    override fun getActualProductsOrderedByShop(): LiveData<List<Product>> {
         return Transformations.map(
             database.productDao()
                 .getAllProductsOrderedByShop(actualPeriod.first, actualPeriod.second)

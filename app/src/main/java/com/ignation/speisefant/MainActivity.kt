@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.search, menu)
+        menuInflater.inflate(R.menu.search_menu, menu)
 
         val searchView = menu.findItem(R.id.action_search).actionView as SearchView
 

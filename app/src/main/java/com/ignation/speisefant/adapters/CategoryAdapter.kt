@@ -8,11 +8,13 @@ import com.ignation.speisefant.databinding.TypeLayoutBinding
 import com.ignation.speisefant.domain.Type
 import com.ignation.speisefant.domain.TypeSource
 
-class CategoryAdapter(private val onItemClicked: (Type) -> Unit) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val onItemClicked: (Type) -> Unit) :
+    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     val dataset = TypeSource.types
 
-    class CategoryViewHolder(private var binding: TypeLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CategoryViewHolder(private var binding: TypeLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(type: Type) {
             binding.categoryTitle.text = type.title
             binding.categoryImage.setImageResource(type.image)

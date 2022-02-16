@@ -73,11 +73,11 @@ class FakeProductRepository : ProductRepository {
 
     private val observableProducts = MutableLiveData<List<Product>>()
 
-    override fun actualProducts(): LiveData<List<Product>> {
+    override fun getActualProducts(): LiveData<List<Product>> {
         return observableProducts
     }
 
-    override fun actualProductsOrderedByShop(): LiveData<List<Product>> {
+    override fun getActualProductsOrderedByShop(): LiveData<List<Product>> {
         return Transformations.map(observableProducts) { list ->
             list.sortedBy { it.shop }
         }

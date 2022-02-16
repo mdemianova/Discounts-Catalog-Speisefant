@@ -5,9 +5,9 @@ import com.ignation.speisefant.domain.Product
 
 interface ProductRepository {
 
-    fun actualProducts(): LiveData<List<Product>>
+    fun getActualProducts(): LiveData<List<Product>>
 
-    fun actualProductsOrderedByShop(): LiveData<List<Product>>
+    fun getActualProductsOrderedByShop(): LiveData<List<Product>>
 
     suspend fun refreshProducts()
 }

@@ -33,7 +33,8 @@ class TitleFragment : Fragment() {
 
         productViewModel.eventNetworkError.observe(this.viewLifecycleOwner) {
             if (it) {
-                Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.network_error), Toast.LENGTH_SHORT)
+                    .show()
                 productViewModel.errorShown()
             }
         }
@@ -45,14 +46,15 @@ class TitleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val categoryAdapter = CategoryAdapter {
-            val action = TitleFragmentDirections.actionTitleFragmentToProductByTypeFragment(it.title)
+            val action =
+                TitleFragmentDirections.actionTitleFragmentToProductByTypeFragment(it.title)
             this.findNavController().navigate(action)
         }
         binding.recyclerViewCategory.adapter = categoryAdapter
 
-
         val shopAdapter = ShopAdapter {
-            val action = TitleFragmentDirections.actionTitleFragmentToProductByShopFragment(it.title)
+            val action =
+                TitleFragmentDirections.actionTitleFragmentToProductByShopFragment(it.title)
             this.findNavController().navigate(action)
         }
         binding.recyclerViewShop.adapter = shopAdapter
