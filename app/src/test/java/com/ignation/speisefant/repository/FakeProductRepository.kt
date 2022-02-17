@@ -16,6 +16,7 @@ class FakeProductRepository : ProductRepository {
             shop = "Rewe",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "drinks"
         ),
         Product(
@@ -26,6 +27,7 @@ class FakeProductRepository : ProductRepository {
             shop = "Rewe",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "drinks"
         ),
         Product(
@@ -36,6 +38,7 @@ class FakeProductRepository : ProductRepository {
             shop = "Lidl",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "milk"
         ),
         Product(
@@ -46,6 +49,7 @@ class FakeProductRepository : ProductRepository {
             shop = "Lidl",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "sweets"
         ),
         Product(
@@ -56,6 +60,7 @@ class FakeProductRepository : ProductRepository {
             shop = "Rewe",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "fruits"
         ),
         Product(
@@ -66,9 +71,9 @@ class FakeProductRepository : ProductRepository {
             shop = "hey",
             startDate = 1644188400000,
             endDate = 1645225200000,
+            details = "180/200 gr",
             type = "fruits"
         )
-
     )
 
     private val observableProducts = MutableLiveData<List<Product>>()

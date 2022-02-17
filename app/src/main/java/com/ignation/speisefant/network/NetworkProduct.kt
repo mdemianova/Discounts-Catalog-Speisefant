@@ -16,6 +16,7 @@ data class NetworkProduct(
     val startDate: Long,
     @Json(name = "end_date")
     val endDate: Long,
+    val details: String,
     val type: String
 )
 
@@ -31,6 +32,7 @@ fun NetworkProductList.asDatabaseModel(): List<ProductDatabase> {
             shop = it.shop,
             startDate = it.startDate,
             endDate = it.endDate,
+            details = it.details,
             type = it.type
         )
     }

@@ -34,6 +34,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
                 this.product = product
                 productTitle.text = product.name
                 productShop.text = product.shop
+                productDetails.text = product.details
                 executePendingBindings()
             }
         }

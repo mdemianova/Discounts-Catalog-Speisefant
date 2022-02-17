@@ -8,5 +8,6 @@ data class Product(
     val shop: String,
     val startDate: Long,
     val endDate: Long,
+    val details: String,
     val type: String
 )
