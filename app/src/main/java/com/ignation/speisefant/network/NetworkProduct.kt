@@ -10,7 +10,7 @@ data class NetworkProduct(
     @Json(name = "new_price")
     val newPrice: Int,
     @Json(name = "old_price")
-    val oldPrice: Int,
+    val oldPrice: Int?,
     val shop: String,
     @Json(name = "start_date")
     val startDate: Long,

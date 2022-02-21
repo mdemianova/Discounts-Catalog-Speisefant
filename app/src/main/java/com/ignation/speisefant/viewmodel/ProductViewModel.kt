@@ -1,5 +1,6 @@
 package com.ignation.speisefant.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.ignation.speisefant.domain.Product
 import com.ignation.speisefant.repository.DefaultProductRepository
@@ -56,6 +57,7 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
                 productRepository.refreshProducts()
                 _eventNetworkError.value = false
             } catch (e: Exception) {
+                Log.d("ViewModel", "refresh: ${e.message}")
                 _eventNetworkError.value = true
             }
         }

@@ -53,10 +53,14 @@ private fun convertToStringFromLong(date: Long): String {
  * Adapter for formatting product prices.
  */
 @BindingAdapter("formattedPrice")
-fun setFormattedPrice(textView: TextView, price: Int) {
+fun setFormattedPrice(textView: TextView, price: Int?) {
     textView.text = convertIntToFloat(price, textView.resources)
 }
 
-private fun convertIntToFloat(price: Int, res: Resources): String {
-    return res.getString(R.string.price, price.toFloat() / 100)
+private fun convertIntToFloat(price: Int?, res: Resources): String {
+    return if (price == null) {
+        ""
+    } else {
+        res.getString(R.string.price, price.toFloat() / 100)
+    }
 }

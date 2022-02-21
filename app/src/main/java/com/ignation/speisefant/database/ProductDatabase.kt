@@ -16,7 +16,7 @@ data class ProductDatabase(
     @ColumnInfo(name = "new_price")
     val newPrice: Int,
     @ColumnInfo(name = "old_price")
-    val oldPrice: Int,
+    val oldPrice: Int? = null,
     val shop: String,
     @ColumnInfo(name = "start_date")
     val startDate: Long,
