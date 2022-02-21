@@ -8,7 +8,6 @@ object TypeSource {
     val types = listOf(
         Type("Fruits", R.drawable.icon_bread_64),
         Type("Milk", R.drawable.icon_bread_64),
-        Type("Drinks", R.drawable.icon_bread_64),
-        Type("Alco", R.drawable.icon_bread_64)
+        Type("Drinks", R.drawable.icon_bread_64)
     )
 }
