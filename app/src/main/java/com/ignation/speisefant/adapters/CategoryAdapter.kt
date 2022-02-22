@@ -3,7 +3,6 @@ package com.ignation.speisefant.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
 import com.ignation.speisefant.databinding.TypeLayoutBinding
 import com.ignation.speisefant.domain.Type
 import com.ignation.speisefant.domain.TypeSource
@@ -17,7 +16,6 @@ class CategoryAdapter(private val onItemClicked: (Type) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(type: Type) {
             binding.categoryTitle.text = type.title
-            binding.categoryImage.setImageResource(type.image)
         }
     }
 

@@ -51,10 +51,20 @@ class ProductByShopFragment : Fragment() {
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Fruits"
-                1 -> "Milk"
-                2 -> "Drinks"
-                else -> "Alcohol"
+                0 -> "Milcherzeugnis"
+                1 -> "Fleisch, Geflügel & Fisch"
+                2 -> "Bäckerei"
+                3 -> "Aufschnitt"
+                4 -> "Nahrungsmittel"
+                5 -> "Tiefkühl"
+                6 -> "Süßes & Snacks"
+                7 -> "Fertiggerichte"
+                8 -> "Kaffee & Tee"
+                9 -> "Getränke"
+                10 -> "Alkohol"
+                11 -> "Sonstiges"
+                12 -> "Hygieneartikel"
+                else -> "Haushalt"
             }
         }.attach()
     }

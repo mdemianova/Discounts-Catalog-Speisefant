@@ -1,13 +1,14 @@
 <resources>
-    <string name="app_name">Speisefant</string>
-    <string name="product_picture">Produktbild</string>
-    <string name="price">%1$.2f €</string>
-    <string name="date">%s — %s</string>
+    <string name="app_name" translatable="false">Speisefant</string>
+    <string name="product_picture">Product picture</string>
+    <string name="price" translatable="false">%1$.2f €</string>
+    <string name="date" translatable="false">%s — %s</string>
     <string name="action_search">Search</string>
-    <string name="search_hint">Type the product</string>
     <string name="empty_title">Nothing found :(</string>
-    <string name="empty_text">There is no discount on this product this week.</string>
+    <string name="empty_text">There is no discount on this product this week</string>
     <string name="network_error">No Internet connection</string>
     <string name="shops_title">Shops</string>
     <string name="category_title">Category</string>
+
+
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_picture">Produktbild</string>
+    <string name="action_search">Suche</string>
+    <string name="empty_title">Nichts gefunden :(</string>
+    <string name="empty_text">Diese Woche gibt es keinen Rabatt auf dieses Produkt</string>
+    <string name="network_error">Keine Internetverbindung</string>
+    <string name="shops_title">Geschäfte</string>
+    <string name="category_title">Kategorie</string>
+</resources>

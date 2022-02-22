@@ -12,7 +12,7 @@ import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
-class MilkEggs : Fragment() {
+class Sweets : Fragment() {
 
     private lateinit var binding: FragmentProductByTypeBinding
 
@@ -31,9 +31,10 @@ class MilkEggs : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("Milcherzeugnis", viewModel.productsByShop)
+        viewModel.filteredByType("Süßes & Snacks", viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it

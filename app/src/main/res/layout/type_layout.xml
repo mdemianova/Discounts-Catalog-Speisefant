@@ -17,26 +17,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/category_image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                tools:src="@drawable/icon_bread_64"
-                app:layout_constraintBottom_toBottomOf="@+id/category_title"
-                app:layout_constraintDimensionRatio="h,1:1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/category_title" />
-
             <TextView
                 android:id="@+id/category_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-
-                app:layout_constraintStart_toEndOf="@+id/category_image"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Products" />
         </androidx.constraintlayout.widget.ConstraintLayout>

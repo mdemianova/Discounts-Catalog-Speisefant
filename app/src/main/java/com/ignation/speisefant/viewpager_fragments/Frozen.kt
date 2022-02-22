@@ -12,7 +12,7 @@ import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
-class FruitsVeggies : Fragment() {
+class Frozen : Fragment() {
 
     private lateinit var binding: FragmentProductByTypeBinding
 
@@ -34,7 +34,7 @@ class FruitsVeggies : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("fruits", viewModel.productsByShop)
+        viewModel.filteredByType("Tiefkühl", viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it
