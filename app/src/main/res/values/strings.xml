@@ -3,6 +3,8 @@
     <string name="product_picture">Product picture</string>
     <string name="price" translatable="false">%1$.2f €</string>
     <string name="date" translatable="false">%s — %s</string>
+    <string name="notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="notification_channel_name">Discounts</string>
     <string name="action_search">Search</string>
     <string name="empty_title">Nothing found :(</string>
     <string name="empty_text">There is no discount on this product this week</string>

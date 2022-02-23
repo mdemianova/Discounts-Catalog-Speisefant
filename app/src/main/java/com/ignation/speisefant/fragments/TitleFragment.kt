@@ -1,6 +1,7 @@
 package com.ignation.speisefant.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
 import com.ignation.speisefant.R
 import com.ignation.speisefant.adapters.CategoryAdapter
 import com.ignation.speisefant.adapters.ShopAdapter
@@ -16,10 +23,13 @@ import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
 
+const val MY_REQUEST_CODE = 100
+
 class TitleFragment : Fragment() {
 
     private var _binding: FragmentTitleBinding? = null
     private val binding get() = _binding!!
+    private val appUpdateManager: AppUpdateManager by lazy { AppUpdateManagerFactory.create(this.requireContext()) }
 
     private val productViewModel: ProductViewModel by activityViewModels() {
         ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
@@ -30,6 +40,21 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTitleBinding.inflate(inflater, container, false)
+
+        appUpdateManager.registerListener {
+            if (it.installStatus() == InstallStatus.DOWNLOADED) {
+                showUpdateDownloadedSnackbar()
+            }
+        }
+
+        appUpdateManager.appUpdateInfo.addOnSuccessListener {
+            if (it.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && it.isUpdateTypeAllowed(
+                    AppUpdateType.FLEXIBLE)) {
+                appUpdateManager.startUpdateFlowForResult(it, AppUpdateType.FLEXIBLE, this.requireActivity(), MY_REQUEST_CODE)
+            }
+        }.addOnFailureListener {
+            Log.e("FlexibleUpdateActivity", "Failed to check for update: $it")
+        }
 
         productViewModel.eventNetworkError.observe(this.viewLifecycleOwner) {
             if (it) {
@@ -65,9 +90,23 @@ class TitleFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        appUpdateManager.appUpdateInfo.addOnSuccessListener {
+            if (it.installStatus() == InstallStatus.DOWNLOADED) {
+                showUpdateDownloadedSnackbar()
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun showUpdateDownloadedSnackbar() {
+        Snackbar.make(binding.root, "Update downloaded!", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Install") { appUpdateManager.completeUpdate() }
+            .show()
+    }
 }
