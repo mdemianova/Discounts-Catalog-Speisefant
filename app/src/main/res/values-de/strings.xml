@@ -4,8 +4,10 @@
     <string name="action_search">Suche</string>
     <string name="empty_title">Nichts gefunden :(</string>
     <string name="empty_text">Diese Woche gibt es keinen Rabatt auf dieses Produkt</string>
-    <string name="notification_channel_name">Rabatte</string>
     <string name="network_error">Keine Internetverbindung</string>
     <string name="shops_title">Geschäfte</string>
     <string name="category_title">Kategorie</string>
+
+    <string name="notification_channel_name">Rabatte</string>
+    <string name="notification_channel_description">Rabatte Newsletter</string>
 </resources>

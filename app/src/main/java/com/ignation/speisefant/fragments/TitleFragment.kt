@@ -19,6 +19,7 @@ import com.ignation.speisefant.R
 import com.ignation.speisefant.adapters.CategoryAdapter
 import com.ignation.speisefant.adapters.ShopAdapter
 import com.ignation.speisefant.databinding.FragmentTitleBinding
+import com.ignation.speisefant.notification.createChannel
 import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import com.ignation.speisefant.viewmodel.ProductViewModelFactory
@@ -41,6 +42,12 @@ class TitleFragment : Fragment() {
     ): View? {
         _binding = FragmentTitleBinding.inflate(inflater, container, false)
 
+        createChannel(
+            getString(R.string.notification_channel_id),
+            getString(R.string.notification_channel_name),
+            requireContext()
+        )
+
         appUpdateManager.registerListener {
             if (it.installStatus() == InstallStatus.DOWNLOADED) {
                 showUpdateDownloadedSnackbar()
@@ -53,7 +60,7 @@ class TitleFragment : Fragment() {
                 appUpdateManager.startUpdateFlowForResult(it, AppUpdateType.FLEXIBLE, this.requireActivity(), MY_REQUEST_CODE)
             }
         }.addOnFailureListener {
-            Log.e("FlexibleUpdateActivity", "Failed to check for update: $it")
+            Log.e("TitleFragment", "Failed to check for update: $it")
         }
 
         productViewModel.eventNetworkError.observe(this.viewLifecycleOwner) {
