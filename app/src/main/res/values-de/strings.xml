@@ -7,7 +7,8 @@
     <string name="network_error">Keine Internetverbindung</string>
     <string name="shops_title">Geschäfte</string>
     <string name="category_title">Kategorie</string>
-
     <string name="notification_channel_name">Rabatte</string>
     <string name="notification_channel_description">Rabatte Newsletter</string>
+    <string name="update_downloaded">Update heruntergeladen!</string>
+    <string name="install">Installieren</string>
 </resources>

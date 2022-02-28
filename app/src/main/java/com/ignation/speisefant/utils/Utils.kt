@@ -25,7 +25,7 @@ private fun getFirstDay(today: LocalDate): Long {
 
 private fun getLastDay(today: LocalDate): Long {
     val currentDayOfWeek = today.dayOfWeek.value
-    val lastDayOffset = (7 - currentDayOfWeek).toLong()
+    val lastDayOffset = (6 - currentDayOfWeek).toLong()
     val lastDay = today.plusDays(lastDayOffset).atStartOfDay(ZoneId.of("Europe/Paris"))
 
     return lastDay.toInstant().toEpochMilli()

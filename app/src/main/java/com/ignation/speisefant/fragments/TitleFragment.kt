@@ -112,8 +112,8 @@ class TitleFragment : Fragment() {
     }
 
     private fun showUpdateDownloadedSnackbar() {
-        Snackbar.make(binding.root, "Update downloaded!", Snackbar.LENGTH_INDEFINITE)
-            .setAction("Install") { appUpdateManager.completeUpdate() }
+        Snackbar.make(binding.root, getString(R.string.update_downloaded), Snackbar.LENGTH_INDEFINITE)
+            .setAction(getString(R.string.install)) { appUpdateManager.completeUpdate() }
             .show()
     }
 }
