@@ -15,7 +15,7 @@
         android:layout_margin="2dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
-        app:contentPadding="8dp"
+        app:contentPadding="6dp"
         app:strokeColor="@color/stroke_color"
         app:strokeWidth="1dp">
 
@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:contentDescription="@string/product_picture"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 app:imageUrl="@{product.image}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="h,1:1"
