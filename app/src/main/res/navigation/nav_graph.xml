@@ -38,4 +38,8 @@
             android:name="query"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.ignation.speisefant.fragments.AboutFragment"
+        android:label="@string/about" />
 </navigation>

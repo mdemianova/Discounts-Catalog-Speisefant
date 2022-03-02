@@ -14,4 +14,9 @@
     <string name="notification_channel_description">Discount newsletter</string>
     <string name="update_downloaded">Update downloaded!</string>
     <string name="install">Install</string>
+
+    <string name="about_text">Speisefant is an application, that shows weekly discounts from prospects.</string>
+    <string name="about_contact">Contact E-Mail for suggestions and offers:</string>
+    <string name="about_mail" translatable="false">ignation.app@gmail.com</string>
+    <string name="about">About</string>
 </resources>

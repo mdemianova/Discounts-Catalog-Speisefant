@@ -11,4 +11,8 @@
     <string name="notification_channel_description">Rabatte Newsletter</string>
     <string name="update_downloaded">Update heruntergeladen!</string>
     <string name="install">Installieren</string>
+    <string name="about_text">Speisefant ist eine Anwendung, die wöchentliche Rabatte von Prospekten anzeigt.</string>
+    <string name="about_contact">Kontakt E-Mail für Anregungen und Angebote:</string>
+    <string name="about">Über uns</string>
+
 </resources>

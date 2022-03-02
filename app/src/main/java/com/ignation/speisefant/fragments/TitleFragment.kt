@@ -56,8 +56,15 @@ class TitleFragment : Fragment() {
 
         appUpdateManager.appUpdateInfo.addOnSuccessListener {
             if (it.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && it.isUpdateTypeAllowed(
-                    AppUpdateType.FLEXIBLE)) {
-                appUpdateManager.startUpdateFlowForResult(it, AppUpdateType.FLEXIBLE, this.requireActivity(), MY_REQUEST_CODE)
+                    AppUpdateType.FLEXIBLE
+                )
+            ) {
+                appUpdateManager.startUpdateFlowForResult(
+                    it,
+                    AppUpdateType.FLEXIBLE,
+                    this.requireActivity(),
+                    MY_REQUEST_CODE
+                )
             }
         }.addOnFailureListener {
             Log.e("TitleFragment", "Failed to check for update: $it")
@@ -112,7 +119,11 @@ class TitleFragment : Fragment() {
     }
 
     private fun showUpdateDownloadedSnackbar() {
-        Snackbar.make(binding.root, getString(R.string.update_downloaded), Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(
+            binding.root,
+            getString(R.string.update_downloaded),
+            Snackbar.LENGTH_INDEFINITE
+        )
             .setAction(getString(R.string.install)) { appUpdateManager.completeUpdate() }
             .show()
     }
