@@ -19,4 +19,5 @@
     <string name="about_contact">Contact E-Mail for suggestions and offers:</string>
     <string name="about_mail" translatable="false">ignation.app@gmail.com</string>
     <string name="about">About</string>
+    <string name="rate">Rate app</string>
 </resources>

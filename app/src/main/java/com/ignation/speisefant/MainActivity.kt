@@ -1,6 +1,9 @@
 package com.ignation.speisefant
 
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -27,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
@@ -60,9 +62,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.rate) {
+            rate()
+        }
+
         return NavigationUI.onNavDestinationSelected(
             item,
             navController
         ) || super.onOptionsItemSelected(item)
+    }
+
+    private fun rate() {
+        try {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("market://details?id=$packageName")
+            )
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("http://play.google.com/store/apps/details?id=$packageName")
+            )
+            startActivity(intent)
+        }
     }
 }
