@@ -17,7 +17,7 @@ fun createActualPeriod(): Pair<Long, Long> {
 
 private fun getFirstDay(today: LocalDate): Long {
     val currentDayOfWeek = today.dayOfWeek.value
-    val firstDayOffset = -currentDayOfWeek.toLong()
+    val firstDayOffset = if (currentDayOfWeek == 7) 1L else -currentDayOfWeek.toLong()
     val firstDay = today.plusDays(firstDayOffset).atStartOfDay(ZoneId.of("Europe/Paris"))
 
     return firstDay.toInstant().toEpochMilli()
@@ -25,7 +25,7 @@ private fun getFirstDay(today: LocalDate): Long {
 
 private fun getLastDay(today: LocalDate): Long {
     val currentDayOfWeek = today.dayOfWeek.value
-    val lastDayOffset = (6 - currentDayOfWeek).toLong()
+    val lastDayOffset = if (currentDayOfWeek == 7) 6L else (6 - currentDayOfWeek).toLong()
     val lastDay = today.plusDays(lastDayOffset).atStartOfDay(ZoneId.of("Europe/Paris"))
 
     return lastDay.toInstant().toEpochMilli()
