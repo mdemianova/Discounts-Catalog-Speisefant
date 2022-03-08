@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/aboutFragment"
-        android:title="@string/about"/>
+        android:menuCategory="secondary"
+        android:title="@string/about" />
     <item
         android:id="@+id/rate"
-        android:title="@string/rate"/>
+        android:menuCategory="secondary"
+        android:title="@string/rate"
+        app:showAsAction="withText"/>
     <item android:id="@+id/action_search"
         android:title="@string/action_search"
         android:icon="@drawable/ic_baseline_search_24"
