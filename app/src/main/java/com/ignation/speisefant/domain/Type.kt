@@ -15,7 +15,6 @@ object TypeSource {
         Type("Kaffee & Tee"),
         Type("Getränke"),
         Type("Alkohol"),
-        Type("Sonstiges"),
         Type("Hygieneartikel"),
         Type("Haushalt")
     )

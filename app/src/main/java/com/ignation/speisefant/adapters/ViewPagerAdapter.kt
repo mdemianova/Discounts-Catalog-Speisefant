@@ -26,7 +26,6 @@ class ViewPagerAdapter(
         Coffee(),
         Drinks(),
         Alcohol(),
-        Other(),
         Hygiene(),
         Home()
     )

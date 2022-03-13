@@ -62,8 +62,7 @@ class ProductByShopFragment : Fragment() {
                 8 -> "Kaffee & Tee"
                 9 -> "Getränke"
                 10 -> "Alkohol"
-                11 -> "Sonstiges"
-                12 -> "Hygieneartikel"
+                11 -> "Hygieneartikel"
                 else -> "Haushalt"
             }
         }.attach()
