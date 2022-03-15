@@ -3,11 +3,15 @@ package com.ignation.speisefant.viewmodel
 import android.util.Log
 import androidx.lifecycle.*
 import com.ignation.speisefant.domain.Product
-import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.repository.ProductRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductViewModel(private val productRepository: ProductRepository) : ViewModel() {
+@HiltViewModel
+class ProductViewModel @Inject constructor(
+        private val productRepository: ProductRepository
+    ) : ViewModel() {
 
     private val _allActualProducts: LiveData<List<Product>> = productRepository.getActualProducts()
     val allActualProducts: LiveData<List<Product>> = _allActualProducts
@@ -17,7 +21,13 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
 
     val productsOrderByShop = productRepository.getActualProductsOrderedByShop()
 
+    private val shopName = MutableLiveData<String>()
+
     lateinit var productsByShop: LiveData<List<Product>>
+
+    fun setShop(openedShop: String) {
+        shopName.value = openedShop
+    }
 
     fun errorShown() {
         _eventNetworkError.value = false
@@ -36,10 +46,14 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
         }
     }
 
-    fun filteredByShop(shopName: String): LiveData<List<Product>> {
+    fun filteredByShop(): LiveData<List<Product>> {
         return Transformations.map(allActualProducts) { list ->
-            list.filter { it.shop == shopName }
+            list.filter { it.shop == shopName.value }
         }
+    }
+
+    fun setListForPages() {
+        productsByShop = filteredByShop()
     }
 
     fun searchByName(query: String): LiveData<List<Product>> {
@@ -57,20 +71,9 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
                 productRepository.refreshProducts()
                 _eventNetworkError.value = false
             } catch (e: Exception) {
-                Log.d("ViewModel", "refresh: ${e.message}")
+                Log.d("ProductViewModel", "VM error: ${e.message}")
                 _eventNetworkError.value = true
             }
         }
-    }
-}
-
-class ProductViewModelFactory(val repository: DefaultProductRepository) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return ProductViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

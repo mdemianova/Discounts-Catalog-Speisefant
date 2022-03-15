@@ -18,8 +18,8 @@ interface ProductDao {
     @Query("SELECT * FROM database_product WHERE start_date BETWEEN :start AND :end ORDER BY shop")
     fun getAllProductsOrderedByShop(start: Long, end: Long): LiveData<List<ProductDatabase>>
 
-    @Query("SELECT * FROM database_product WHERE start_date BETWEEN :start AND :end AND shop = :shop")
-    fun getProductsByShop(start: String, end: String, shop: String): LiveData<List<ProductDatabase>>
+    @Query("SELECT * FROM database_product WHERE shop = :shop AND start_date BETWEEN :start AND :end")
+    fun getProductsByShop(start: Long, end: Long, shop: String): LiveData<List<ProductDatabase>>
 
     @Query("SELECT * FROM database_product WHERE name LIKE :query")
     fun searchProducts(query: String): LiveData<List<ProductDatabase>>

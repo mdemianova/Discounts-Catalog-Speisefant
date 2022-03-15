@@ -8,17 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
-import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
-import com.ignation.speisefant.viewmodel.ProductViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Alcohol : Fragment() {
 
     private lateinit var binding: FragmentProductByTypeBinding
 
-    private val viewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
-    }
+    private val viewModel: ProductViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

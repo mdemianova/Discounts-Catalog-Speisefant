@@ -1,6 +1,7 @@
 package com.ignation.speisefant.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,16 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ignation.speisefant.adapters.ViewPagerAdapter
 import com.ignation.speisefant.databinding.FragmentProductByShopBinding
-import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
-import com.ignation.speisefant.viewmodel.ProductViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductByShopFragment : Fragment() {
 
     private var _binding: FragmentProductByShopBinding? = null
     private val binding get() = _binding!!
 
-    private val productViewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
-    }
+    private val productViewModel: ProductViewModel by activityViewModels()
 
     private val navigationArgs: ProductByShopFragmentArgs by navArgs()
     private lateinit var shopName: String
@@ -37,7 +36,9 @@ class ProductByShopFragment : Fragment() {
 
         _binding = FragmentProductByShopBinding.inflate(layoutInflater)
 
-        productViewModel.productsByShop = productViewModel.filteredByShop(shopName)
+        productViewModel.setShop(shopName)
+        productViewModel.setListForPages()
+        Log.d("ProductByShopF", "ViewModel: ${productViewModel.hashCode()}")
 
         return binding.root
     }

@@ -10,18 +10,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
-import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
-import com.ignation.speisefant.viewmodel.ProductViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductByTypeFragment : Fragment() {
 
     private var _binding: FragmentProductByTypeBinding? = null
     private val binding get() = _binding!!
 
-    private val productViewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
-    }
+    private val productViewModel: ProductViewModel by activityViewModels()
 
     private val navigationArgs: ProductByTypeFragmentArgs by navArgs()
     private lateinit var type: String
