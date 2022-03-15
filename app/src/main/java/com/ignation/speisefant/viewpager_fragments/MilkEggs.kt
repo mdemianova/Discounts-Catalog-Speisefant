@@ -31,7 +31,7 @@ class MilkEggs : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.allActualProducts//filteredByType("Milcherzeugnis", viewModel.productsByShop)
+        viewModel.filteredByType("Milcherzeugnis", viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it
