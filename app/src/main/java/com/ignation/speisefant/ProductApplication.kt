@@ -1,8 +1,9 @@
 package com.ignation.speisefant
 
 import android.app.Application
-import com.ignation.speisefant.database.ProductRoomDatabase
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class ProductApplication : Application() {
-    val database: ProductRoomDatabase by lazy { ProductRoomDatabase.getDatabase(this) }
+
 }

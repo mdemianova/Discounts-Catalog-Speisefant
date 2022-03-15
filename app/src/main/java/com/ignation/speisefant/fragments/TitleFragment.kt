@@ -20,21 +20,19 @@ import com.ignation.speisefant.adapters.CategoryAdapter
 import com.ignation.speisefant.adapters.ShopAdapter
 import com.ignation.speisefant.databinding.FragmentTitleBinding
 import com.ignation.speisefant.notification.createChannel
-import com.ignation.speisefant.repository.DefaultProductRepository
 import com.ignation.speisefant.viewmodel.ProductViewModel
-import com.ignation.speisefant.viewmodel.ProductViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
 const val MY_REQUEST_CODE = 100
 
+@AndroidEntryPoint
 class TitleFragment : Fragment() {
 
     private var _binding: FragmentTitleBinding? = null
     private val binding get() = _binding!!
     private val appUpdateManager: AppUpdateManager by lazy { AppUpdateManagerFactory.create(this.requireContext()) }
 
-    private val productViewModel: ProductViewModel by activityViewModels() {
-        ProductViewModelFactory(DefaultProductRepository(requireActivity().application))
-    }
+    private val productViewModel: ProductViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,6 +99,7 @@ class TitleFragment : Fragment() {
         binding.swiperefresh.setOnRefreshListener {
             productViewModel.refreshDataFromRepository()
             binding.swiperefresh.isRefreshing = false
+            Log.d("TitleFragment", "ViewModel: ${productViewModel.hashCode()}")
         }
     }
 
