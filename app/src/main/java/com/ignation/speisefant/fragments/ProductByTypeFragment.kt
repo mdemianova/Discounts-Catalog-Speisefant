@@ -22,7 +22,6 @@ class ProductByTypeFragment : Fragment() {
     private val productViewModel: ProductViewModel by activityViewModels()
 
     private val navigationArgs: ProductByTypeFragmentArgs by navArgs()
-    private lateinit var type: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,13 +35,14 @@ class ProductByTypeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        type = navigationArgs.type
-        (activity as AppCompatActivity).supportActionBar?.title = type
+        productViewModel.setType(navigationArgs.type)
+
+        (activity as AppCompatActivity).supportActionBar?.title = navigationArgs.type
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
 
-        productViewModel.filteredByType(type, productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
+        productViewModel.filteredByType(productViewModel.productsOrderByShop).observe(this.viewLifecycleOwner) {
             it.let {
                 adapter.dataset = it
             }

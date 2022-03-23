@@ -32,7 +32,8 @@ class Frozen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("Tiefkühl", viewModel.productsByShop)
+        viewModel.setType("Tiefkühl")
+        viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it

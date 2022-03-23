@@ -32,14 +32,15 @@ class ProductViewModelTest {
     @Test
     fun dataset_filter_by_type_drinks_returns_2() {
         val dataset = productViewModel.allActualProducts
-        val filtered = productViewModel.filteredByType("drinks", dataset)
+        productViewModel.setType("drinks")
+        val filtered = productViewModel.filteredByType(dataset)
         filtered.observeForever {}
         assertEquals("Filter by type gave wrong result", 2, filtered.value?.size)
     }
 
     @Test
     fun dataset_filter_by_shop_rewe_returns_3() {
-        val filtered = productViewModel.filteredByShop("Rewe")
+        val filtered = productViewModel.filteredByShop()
         filtered.observeForever {}
         assertEquals("Filter by shop gave wrong result", 3, filtered.value?.size)
     }

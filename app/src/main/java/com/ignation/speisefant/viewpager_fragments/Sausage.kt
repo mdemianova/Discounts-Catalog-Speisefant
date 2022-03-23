@@ -32,7 +32,8 @@ class Sausage : Fragment() {
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("Aufschnitt", viewModel.productsByShop)
+        viewModel.setType("Aufschnitt")
+        viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it

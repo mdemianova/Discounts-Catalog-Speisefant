@@ -23,10 +23,16 @@ class ProductViewModel @Inject constructor(
 
     private val shopName = MutableLiveData<String>()
 
+    private val type = MutableLiveData<String>()
+
     lateinit var productsByShop: LiveData<List<Product>>
 
     fun setShop(openedShop: String) {
         shopName.value = openedShop
+    }
+
+    fun setType(openedType: String) {
+        type.value = openedType
     }
 
     fun errorShown() {
@@ -38,11 +44,10 @@ class ProductViewModel @Inject constructor(
     }
 
     fun filteredByType(
-        type: String,
         productsDataset: LiveData<List<Product>>
     ): LiveData<List<Product>> {
         return Transformations.map(productsDataset) { list ->
-            list.filter { it.type == type }
+            list.filter { it.type == type.value }
         }
     }
 

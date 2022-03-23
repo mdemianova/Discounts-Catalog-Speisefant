@@ -32,7 +32,8 @@ class Bread : Fragment() {
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.filteredByType("Bäckerei", viewModel.productsByShop)
+        viewModel.setType("Bäckerei")
+        viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {
                     adapter.dataset = it
