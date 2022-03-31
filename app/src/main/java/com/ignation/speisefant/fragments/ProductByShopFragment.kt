@@ -12,9 +12,13 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ignation.speisefant.adapters.ViewPagerAdapter
 import com.ignation.speisefant.databinding.FragmentProductByShopBinding
+import com.ignation.speisefant.utils.*
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * This fragment filters a list of all products by a chosen shop. It holds ViewPager with Tabs.
+ */
 @AndroidEntryPoint
 class ProductByShopFragment : Fragment() {
 
@@ -52,19 +56,19 @@ class ProductByShopFragment : Fragment() {
         val tabLayout = binding.tabLayout
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Milcherzeugnis"
-                1 -> "Fleisch, Geflügel & Fisch"
-                2 -> "Bäckerei"
-                3 -> "Aufschnitt"
-                4 -> "Nahrungsmittel"
-                5 -> "Tiefkühl"
-                6 -> "Süßes & Snacks"
-                7 -> "Fertiggerichte"
-                8 -> "Kaffee & Tee"
-                9 -> "Getränke"
-                10 -> "Alkohol"
-                11 -> "Hygieneartikel"
-                else -> "Haushalt"
+                0 -> MILK
+                1 -> MEAT
+                2 -> BAKERY
+                3 -> COLD_CUTS
+                4 -> GROCERY
+                5 -> FROZEN
+                6 -> SNACKS
+                7 -> READY_FOOD
+                8 -> COFFEE_TEA
+                9 -> DRINKS
+                10 -> ALCOHOL
+                11 -> HYGIENE
+                else -> HOME
             }
         }.attach()
     }

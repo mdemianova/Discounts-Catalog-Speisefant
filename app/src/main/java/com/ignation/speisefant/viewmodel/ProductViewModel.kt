@@ -8,6 +8,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Single ViewModel, accessed by al fragments.
+ */
 @HiltViewModel
 class ProductViewModel @Inject constructor(
         private val productRepository: ProductRepository

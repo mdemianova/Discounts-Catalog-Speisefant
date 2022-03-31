@@ -99,7 +99,6 @@ class TitleFragment : Fragment() {
         binding.swiperefresh.setOnRefreshListener {
             productViewModel.refreshDataFromRepository()
             binding.swiperefresh.isRefreshing = false
-            Log.d("TitleFragment", "ViewModel: ${productViewModel.hashCode()}")
         }
     }
 

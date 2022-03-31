@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
+import com.ignation.speisefant.utils.HOME
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +33,7 @@ class Home : Fragment() {
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.setType("Haushalt")
+        viewModel.setType(HOME)
         viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {

@@ -15,13 +15,13 @@ class ViewPagerAdapter(
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     private var categories = listOf(
-        MilkEggs(),
+        Milk(),
         Meat(),
         Bread(),
-        Sausage(),
+        ColdCuts(),
         Grocery(),
         Frozen(),
-        Sweets(),
+        Snacks(),
         Ready(),
         Coffee(),
         Drinks(),

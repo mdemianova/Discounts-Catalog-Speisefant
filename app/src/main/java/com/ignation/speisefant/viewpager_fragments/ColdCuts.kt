@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
+import com.ignation.speisefant.utils.COLD_CUTS
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Sweets : Fragment() {
+class ColdCuts : Fragment() {
 
     private lateinit var binding: FragmentProductByTypeBinding
 
@@ -32,7 +33,7 @@ class Sweets : Fragment() {
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.setType("Süßes & Snacks")
+        viewModel.setType(COLD_CUTS)
         viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {

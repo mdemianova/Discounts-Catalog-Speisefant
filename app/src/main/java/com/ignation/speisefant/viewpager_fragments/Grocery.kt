@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.ignation.speisefant.adapters.ProductAdapter
 import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
+import com.ignation.speisefant.utils.GROCERY
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +33,7 @@ class Grocery : Fragment() {
 
         val adapter = ProductAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.setType("Nahrungsmittel")
+        viewModel.setType(GROCERY)
         viewModel.filteredByType(viewModel.productsByShop)
             .observe(this.viewLifecycleOwner) {
                 it.let {

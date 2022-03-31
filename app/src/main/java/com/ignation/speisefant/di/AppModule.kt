@@ -28,7 +28,9 @@ abstract class RepoModule {
             app,
             ProductRoomDatabase::class.java,
             "product_database"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
 
         @Singleton
         @Provides

@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ignation.speisefant.databinding.ProductLayoutBinding
 import com.ignation.speisefant.domain.Product
 
+/**
+ * Adapter for displaying a list of products.
+ */
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     var dataset = listOf<Product>()

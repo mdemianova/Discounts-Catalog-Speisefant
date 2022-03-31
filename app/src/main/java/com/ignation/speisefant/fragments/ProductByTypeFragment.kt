@@ -13,6 +13,9 @@ import com.ignation.speisefant.databinding.FragmentProductByTypeBinding
 import com.ignation.speisefant.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Fragment for displaying a list of all products, filtered by category.
+ */
 @AndroidEntryPoint
 class ProductByTypeFragment : Fragment() {
 

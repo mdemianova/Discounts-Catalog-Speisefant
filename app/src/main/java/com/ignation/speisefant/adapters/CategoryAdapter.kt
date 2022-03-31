@@ -7,6 +7,9 @@ import com.ignation.speisefant.databinding.TypeLayoutBinding
 import com.ignation.speisefant.domain.Type
 import com.ignation.speisefant.domain.TypeSource
 
+/**
+ * Adapter for displaying a row of product categories on the title screen.
+ */
 class CategoryAdapter(private val onItemClicked: (Type) -> Unit) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 

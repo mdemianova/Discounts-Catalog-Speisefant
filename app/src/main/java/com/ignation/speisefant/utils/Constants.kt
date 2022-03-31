@@ -1,0 +1,15 @@
+package com.ignation.speisefant.utils
+
+const val MILK = "Milcherzeugnis"
+const val MEAT = "Fleisch, Geflügel & Fisch"
+const val BAKERY = "Bäckerei"
+const val COLD_CUTS = "Aufschnitt"
+const val GROCERY = "Nahrungsmittel"
+const val FROZEN = "Tiefkühl"
+const val SNACKS = "Süßes & Snacks"
+const val READY_FOOD = "Fertiggerichte"
+const val COFFEE_TEA = "Kaffee & Tee"
+const val DRINKS = "Getränke"
+const val ALCOHOL = "Alkohol"
+const val HYGIENE = "Hygieneartikel"
+const val HOME = "Haushalt"

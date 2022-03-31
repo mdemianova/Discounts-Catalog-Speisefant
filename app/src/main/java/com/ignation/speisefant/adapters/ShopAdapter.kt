@@ -7,6 +7,9 @@ import com.ignation.speisefant.databinding.ShopItemLayoutBinding
 import com.ignation.speisefant.domain.Shop
 import com.ignation.speisefant.domain.ShopSource
 
+/**
+ * Adapter for displaying a grid of shops on the title screen.
+ */
 class ShopAdapter(private val onItemClicked: (Shop) -> Unit) :
     RecyclerView.Adapter<ShopAdapter.ShopViewHolder>() {
 
