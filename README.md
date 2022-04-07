@@ -14,4 +14,9 @@ With this project, I learned how to use:
 - RecyclerView
 - Navigation Component
 
-Aplication has single Activity with MVVM architecture.
+Aplication has a single Activity with MVVM architecture.
+
+<p float="left">
+<img src="images/title_screenshot.png" width="250">
+<img src="images/shop_screenshot.png" width="250">
+</p>
