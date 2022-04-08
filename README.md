@@ -1,4 +1,4 @@
-# Speisefant
+# Discounts-Catalog-Speisefant
 This is an Android application with a discounts catalog.
 
 The app gets a list of discounts from the server and filters it by categories. 
