@@ -13,6 +13,7 @@ With this project, I learned how to use:
 - ViewPager2
 - RecyclerView
 - Navigation Component
+- DataBinding and Binding Adapters
 
 Aplication has a single Activity with MVVM architecture.
 
