@@ -40,6 +40,7 @@ class ProductViewModelTest {
 
     @Test
     fun dataset_filter_by_shop_rewe_returns_3() {
+        productViewModel.setShop("Rewe")
         val filtered = productViewModel.filteredByShop()
         filtered.observeForever {}
         assertEquals("Filter by shop gave wrong result", 3, filtered.value?.size)
